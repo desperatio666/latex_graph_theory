@@ -1,0 +1,213 @@
+\documentclass{beamer}
+\usetheme{Berlin}%{Boadilla}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{tikz}
+\usepackage{hyperref} 
+\usetikzlibrary{external}
+\tikzexternalize[prefix=tikz/]
+
+\title{Graphentheorie} 
+\author{F.~Butter}
+\date{25/04/2022}
+\institute{Technische Universität Dresden}
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Übersicht}
+	\tableofcontents
+\end{frame}
+
+\section[Was sind Graphen?]{Was sind Graphen? -- Grundbegriffe, Überblick}
+
+\begin{frame}{\secname}
+	\begin{block}{Definition} 
+		Ein \emph{Graph} $G = (V, E)$ besteht aus einer nichtleeren Menge $V$ und einer (möglicherweise leeren) Kantenmenge $E$, wobei jede Kante $e \in E$ zwei Knoten $u$, $v$ miteinander verbindet.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Wenn $u = v$ für eine Kante $e = \{u, v\}$ gilt, so nennt man dies eine \emph{Schlinge}. 
+		\item Wenn für zwei Kanten $e, f \in E$ gilt: $e = f = \{u , v\}$ (gleiche Endknoten), so sind diese \emph{parallel}. 
+		\item Ein Graph heißt \emph{einfach}, genau dann wenn er weder Schlingen noch parallele Kanten enthält.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Definition}
+		Sei $G = (V, E)$ ein Graph, $u, v \in V$ und $e \in E$. Es gilt jeweils:
+		\begin{itemize}
+			\item \emph{Inzident:} Ein Knoten $v$ und eine Kante $e$ \emph{inzidieren} miteinander, wenn $v$ ein \emph{Endknoten} von $e$ ist.
+			\item \emph{Nachbar eines Knotens:} Gilt für eine Menge an Knoten $\{u, v\} \in E$, so sind $u$ und $v$ \emph{adjazent} bzw.\ \emph{benachbart} in $G$ und heißen \emph{Nachbarn}. 
+			\item \emph{Nachbar einer Kante:} Zwei Kanten $e = \{u, v\} \in E$ und $f = \{v, w\} \in E$ heißen \emph{adjazent/benachbart}, wenn sie einen gemeinsamen Knoten haben.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Konventionen}
+	\begin{itemize}
+		\item Bezeichne eine Kante $e$ mit $e:= \{u, v\}$ (was wir NICHT verwenden: $e = (u, v)$, $e = uv$)
+		\item \emph{Endknoten:} Bezeichne einen Endknoten als ein Knoten $u \in V$, der in einer Kante $e = \{u, v\}$ enthalten ist. %%%%maybe tikZ img to illustrate%%%
+		\item Knotenanzahl in einem Graphen: $n$
+		\item Kantenanzahl in einem Graphen: $m$
+		\item Wir beschäftigen uns von nun an mit \emph{einfachen} Graphen.
+	\end{itemize}
+
+\end{frame}
+
+\section[Gimme five!]{Gimme five! (Handshaking-Lemma)}
+
+\begin{frame}{\secname}
+	\begin{block}{Definition}
+		Sei $G = (V, E)$ ein Graph. Der \emph{Grad} $d(v)$ eines Knotens $v \in V$ ist die Anzahl des Auftretens von $v$ als Endknoten einer Kante. Wenn $G$ einfach ist, so ist $d(v)$ gleich der Anzahl der Nachbarn von v.
+		\par\bigskip
+		Für einen Knoten $v \in V$, bezeichne
+		\begin{itemize}
+			\item $\delta(G)$ als \emph{Minimalgrad}
+			\item $\Delta(G)$ als \emph{Maximalgrad}
+		\end{itemize}
+		des Graphen.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{exampleblock}{Handshaking-Lemma}
+		Die Summe der Knotengrade entspricht zweimal der Anzahl der Knoten, also
+		\begin{equation*}
+			\sum_{v \in V}d(v) = 2 \cdot |E| = 2m.
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+	\begin{exampleblock}{Lemma}
+		In einem Graphen ist die Anzahl der Knoten mit \emph{ungeradem Grad} gerade.
+	\end{exampleblock}
+\end{frame}
+
+\section[Jeder kennt jeden]{Jeder kennt jeden -- vollständige Graphen}
+
+\begin{frame}{\secname}
+	\begin{block}{Definition}
+		Ein Graph $G = (V, E)$ heißt \emph{vollständig}, wenn jeder Knoten zu jedem anderen benachbart ist.
+		\begin{itemize}
+			\item[$\rightarrow$] da $G$ nur von $n$ abhängig, bezeichne $G$ als $K_n$
+			\item[$\rightarrow$] $\delta(G) = \Delta(G)$
+		\end{itemize}
+	\end{block}
+
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Definition}
+		Ein Graph $G = (V, E)$ heißt \emph{bipartit}, wenn seine Knoten in zwei Teilmengen an Knoten $A, B \in V$ so zerlegt werden können, dass nur Kanten \emph{zwischen}, aber nicht \emph{innerhalb} einer Knotenmenge verlaufen.
+		\begin{itemize}
+			\item[$\rightarrow$] Falls ein Graph die \emph{maximale Anzahl an Kanten} $m_{\mathrm{max}} = |A| \cdot |B|$ besitzt, nennt man ihn \emph{vollständig bipartit}.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Was sind Wege?}
+
+\begin{frame}{\secname}
+	\begin{block}{Definition}
+		Sei $G = (V, E)$ ein Graph. Ein Graph $G' = (V', E')$ ist ein \emph{Teilgraph} von $G$, wenn $V' \subseteq V$ und $E' \subseteq E$ gilt.
+		\par\bigskip
+    Falls $E'$ jede Kante aus $E$ enthält, die zwei Knoten aus $V'$ verbindet, so sagt man: $G'$ ist ein von $V' \subseteq V$ \emph{induzierter Teilgraph} bzw.\ \emph{Untergraph} von $G$.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Definition}
+		Ein \emph{Kantenzug $Z$} in $G$ ist eine Folge von Knoten und Kanten in $G$, die sich wie folgt hintereinanderschreiben lässt:
+    \begin{equation*}
+			Z = e_0e_1e_2 \ldots e_k
+		\end{equation*}
+    wobei $e_i = \{x_i, x_{i+1}\}$ gilt ($x_i \in V$ sind hier die Knoten).
+	\end{block}
+    \begin{itemize}
+        \item Eine Alternativdefinition ist folgende: Ein Kantenzug ist definiert als
+        \begin{equation*}
+            Z = x_0e_0x_1e_1x_2e_2 \ldots x_{k-1}e_{k-1}x_k
+        \end{equation*}
+        wobei $e_i = \{x_1, x_{i+1}\}$ gilt.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Definition}
+		Sei $Z$ ein Kantenzug. Definiere nun $Z$ als
+		\begin{itemize}
+			\item einen \emph{Weg}: Alle Kanten in $Z$ sind verschieden. Die Knoten $x_0$ und $x_k$ sind die \emph{Endknoten} eines Weges $p$. 
+			\item einen \emph{Kreis}: Ein \emph{Kreis} ist ein Weg, bei dem gilt: $x_0 = x_k$ (gleicher Anfangs- und Endknoten).
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Es könnte alles so einfach sein\ldots}
+	\begin{block}{Definiere nun}
+		\begin{itemize}
+			\item \emph{einfacher Weg:} Ein Weg heißt \emph{einfach}, wenn keine doppelten Knoten vorkommen, also kein Knoten doppelt "`durchlaufen"' wird.
+			\item \emph{einfacher Kreis:} Ein Kreis heißt \emph{einfach}, wenn außer dem Endknoten kein Knoten doppelt vorkommt. 
+		\end{itemize}
+	\end{block}
+
+\end{frame}
+
+\begin{frame}
+	\begin{exampleblock}{Satz: Einfache Wege und einfache Kreise}
+		Jeder Graph $G$ enthält einen einfachen Weg der Länge $\delta(G)$. Falls $\delta(G) \geq 2$ gilt, dann enthält er auch einen einfachen Kreis von mindestens der Länge $\delta(G) + 1$. ($\delta(G)$ ist der Minimalgrad.)
+	\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}{Zusammenhänge(nde Graphen)}
+	\begin{block}{Definition}
+		Ein Graph $G$ heißt \emph{zusammenhängend}, wenn zu je zwei Knoten $u, v \in V$ von $G$ ein \emph{Weg} von $u$ nach $v$ existiert.
+		\par\bigskip
+    Nicht zusammenhängende Graphen heißen \emph{unzusammenhängend}.
+		\par\bigskip
+    Eine \emph{Zusammenhangskomponente} $H$ von $G$ ist ein \emph{maximal zusammenhängender Teilgraph} von $G$. 
+	\end{block}
+\end{frame}
+
+\section[Wozu das Ganze?]{Wozu das Ganze? (Ausblick, Anwendungen)}
+\begin{frame}{Ausblick}
+    \begin{itemize}
+        \item kürzeste-Wege-Probleme: Wie ermitteln Navigationsgeräte den "kürzesten"/"schnellsten"/etc.. Weg?
+        \item Rundreisen: Finde einen Kreis, der alle Knoten des Graphen durchläuft.
+        \item Färbungsprobleme: Graphen einfärben ($\rightarrow$ Würfelgraph); z.B. Erstellen eines Stundenplans (Knoten: Dozent und Kurs, Kanten: 2 Knoten verbunden, wenn 2 Veranstaltungen nicht gleichzeitig sind). Ziel ist die Färbung aller Knoten mit möglichst wenig Farben.
+        \item $\ldots$
+    \end{itemize}
+    
+\end{frame}
+
+    %%%% Färbungsprobleme: Graphen unterschiedlich färben (wie bei Würfel) -> Stundenpläne (Knoten Kombi aus Dozent & Kurs (Fr Müller Klasse 7 & 8 -> 2 Knoten), Kanten wenn 2 Veranstaltungen nicht gleichzeitig sind, Färbung d. Knoten -> benachbarte Knoten unterschiedlich gefärbt -> Ziel: möglichst wenig Farben)
+
+\begin{frame}{Anwendungen}
+	\begin{itemize}
+		\item Das Internet!
+		\begin{itemize}
+			\item Knoten: einzelne Website
+			\item Kanten: Hyperlink zwischen den Websites ($=$ Links)
+		\end{itemize}
+		\item Chemie ($\rightarrow$ chemische Graphentheorie)
+		\begin{itemize}
+			\item Knoten: Atome
+			\item Kanten: Bindungen zwischen den Atomen 
+		\end{itemize}
+		\item Äquivalenzrelationen (Knoten: Elemente, Kanten: zwei Elemente stehen in Relation zueinander)
+		\item usw.\ \(\ldots\)
+		\item generell überall in der Wissenschaft, v.\,a.\ Informatik
+	\end{itemize}
+\end{frame}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%template for frames:
+%\begin{frame}
+%    \frametitle{}
+%\end{frame}
