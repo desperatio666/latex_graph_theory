@@ -19,8 +19,9 @@
 \section{Was sind Graphen? - Eine Einführung}
 In diesem Paper möchte ich eine erste Einführung zum Thema Graphentheorie geben. Wer noch nie mit dem Thema in Berührung gekommen ist, soll nach dem Studieren dieser Einführung einen grundlegenden Überblick über die Basics bekommen. Hierzu beginnen wir mit den gundlegenden Definitionen, werden uns einsteigende Beispiele anschauen, sowie ein paar erste Sätze.\\
 \bigskip
-\textbf{Definition.} 
+\begin{block}{Definition.} 
             Ein \textbf{Graph} \( G = (V, E)\) besteht aus einer nichtleeren Menge V und einer (möglicherweise leeren) Kantenmenge \(E\), wobei jede Kante \(e \in E\) zwei Knoten \(u, v\) miteinander verbindet.\\
+\end{block}
 \bigskip
 Beginnen wir also direkt mit dieser Definition. Zunächst abstrakt wirkend, schauen wir uns doch erst einmal ein Beispiel an:\\
 Angenommen, Katrin, Tom, Erik und Lisa sind vier Studierende. Katrin kennt Tom, Lisa und Erik, Lisa kennt Tom und Katrin, Tom kennt Lisa und Katrin, und Erik kennt Katrin. Zusätzlich kennt jeder natürlich noch sich selbst.\\
@@ -42,7 +43,7 @@ Unser Beispielgraph mit den Studierenden, welche untereinander befreundet sind, 
 
 \nepwage
 Nun wird es zunächst wieder etwas technischer. Wir schauen uns jetzt weiter Beziehungen von Knoten und Kanten untereinander an:\\
-\textbf{Definitionen.}
+\begin{block}{Definitionen.}
     Sei \(G = (V, E)\) ein Graph, \(u, v \in V\) und \(e \in E\).
     Es gilt jeweils:
     \begin{itemize}
@@ -53,6 +54,7 @@ Nun wird es zunächst wieder etwas technischer. Wir schauen uns jetzt weiter Bez
         \item \textbf{\textit{Nachbar einer Kante}}:
             Zwei Kanten \(e = \{u, v\} \in E\) und \(f = \{v, w\} \in E\) heißen \textit{adjazent/benachbart}, wenn sie einen gemeinsamen Knoten haben.
     \end{itemize}
+\end{block}
 Diese Definitionen macht man sich am Besten klar, indem man sich selbst einmal einen Graphen anschaut (dafür eignet sich beispielsweise unser einführendes Beispiel mit den Studierenden).\\
 
 \subsection{Konventionen}
@@ -71,7 +73,8 @@ Nun, da die nötigen Grundlagen gelegt sind, kann es auch schon mit der ersten w
 \bigskip
 Bevor wir jedoch dazu kommen, müssen wir erneut eine relevante Definition einführen:\\
 \bigskip
-\textbf{Definition.} Sei \(G = (V, E)\) ein Graph. Der \textbf{Grad} \(d(v)\) eines Knotens \(v \in V\) ist die Anzahl des Auftretens von \(v\) als Endknoten einer Kante. Wenn \(G\) einfach ist, so ist \(d(v)\) gleich der Anzahl der Nachbarn von v.\\
+\begin{block}{Definition.} Sei \(G = (V, E)\) ein Graph. Der \textbf{Grad} \(d(v)\) eines Knotens \(v \in V\) ist die Anzahl des Auftretens von \(v\) als Endknoten einer Kante. Wenn \(G\) einfach ist, so ist \(d(v)\) gleich der Anzahl der Nachbarn von v.\\
+\end{block}
 \bigskip
 Diese Definition lässt sich sehr einfach auf unseren Beispielgraphen vom Anfang übertragen: Um beispielsweise den Grad des Knotens "Katrin" zu bestimmen, zählen wir einfach, wie viele Kanten von dem Knoten ausgehen, also, mit wie vielen Studierenden Katrin aus der Gruppe von 4 Menschen befreundet ist, also die Anzahl der Nachbarn des Knoten "Katrin". In diesem Falle sind es \(3\) Kanten, also ist Katrin mit 3 Studierenden (Tom, Erik, Lisa) befreundet.\\
 Das Zählen der Freunde funktioniert aber nur, da G einfach ist. Würde es beispielsweise noch eine Schlinge für "Studierender x kennt sich selbst" geben, so wäre der Knotengrad jeweils die Anzahl der Nachbarn der Knoten \(+1\).\\
@@ -85,10 +88,15 @@ Weiterhin bezeichnen wir für einen Knoten \(v \in V\):
 Was sind jeweils der Minimal- und Maximalgrad des Beispielgraphen?\\
 \bigskip
 Nun können wir auch schon zur versprochenen wichtigen Erkenntnis kommen: Dem Handshaking-Lemma.\\
-\textbf{Lemma.} \textit{(Handshaking-Lemma.)}
+\begin{exampleblock}{(Handshaking-Lemma.)}
 Die Summe der Knotengrade entspricht zweimal der Anzahl der Knoten, also
-\[\sum_{v \in V}d(v) = 2 \cdot |E| = 2m.\]
+\begin{equation*}
+	\sum_{v \in V}d(v) = 2 \cdot |E| = 2m.
+\end{equation*}
+\end{exampleblock}
 \bigskip
-\textbf{Beweis.} %%%TODO: Beweis einfügen%%%
-%%%TODO: Zeugs aus neuer Version übernehmen :S %%%
+\textbf{Beweis.}\\ %%%TODO: Beweis (nochmal) einfügen :/
+\begin{proof}
+	blablabla
+\end{proof}
 \end{document}
