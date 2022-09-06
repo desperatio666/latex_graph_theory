@@ -1,14 +1,45 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
 
 \title{Graphentheorie}
 \author{Franziska Butter}
 \date{September 2022}
+\institute{Technische Universität Dresden}
 
 \begin{document}
 
 \maketitle
 
-\section{Introduction}
+\section{Übersicht}
+	\tableofcontents
+
+\newpage
+
+\section{Was sind Graphen? - Eine Einführung}
+In diesem Paper möchte ich eine erste Einführung zum Thema Graphentheorie geben. Wer noch nie mit dem Thema in Berührung gekommen ist, soll nach dem Studieren dieser Einführung einen grundlegenden Überblick über die Basics bekommen. Hierzu beginnen wir mit den gundlegenden Definitionen, werden uns einsteigende Beispiele anschauen, sowie ein paar erste Sätze.\\
+\\
+\textbf{Definition.} 
+            Ein \textbf{Graph} \( G = (V, E)\) besteht aus einer nichtleeren Menge V und einer (möglicherweise leeren) Kantenmenge \(E\), wobei jede Kante \(e \in E\) zwei Knoten \(u, v\) miteinander verbindet.\\
+\\
+Beginnen wir also direkt mit dieser Definition. Zunächst abstrakt wirkend, schauen wir uns doch erst einmal ein Beispiel an:\\
+Angenommen, Katrin, Tom, Erik und Lisa sind vier Studierende. Katrin kennt Tom, Lisa und Erik, Lisa kennt Tom und Katrin, Tom kennt Lisa und Katrin, und Erik kennt Katrin. Zusätzlich kennt jeder natürlich noch sich selbst.\\
+Diese Freundschaften kann man nun in einem mathematischen Graphen betrachten. Jeder Studierende ist hierbei ein Knoten \(v\) , und jede Freundschaft zwischen zwei Knoten bildet eine Kante \(e\). Zusammen bilden alle Knoten die Knotenmenge \(V\), und alle Kanten die Kantenmenge \(E\).\\
+Zusammen bilden \((V, E)\) den Graphen \(G\), welchen man graphisch darstellen kann.\\
+\\
+Nun könne die Knoten und Kanten jeweils verschiedene Beziehungen zueinander haben.\\
+Um auf unser Beispiel zurückzukommen: Eine triviale, jedoch erwähnenswerte Erscheinung ist noch, dass jeder sich selbst kennt. Übersetzt in die Sprache der Graphentheorie bedeutet dies, dass eine Kante den gleichen Endpunkt hat. Dieses Phänomen nennt man \textbf{Schlinge}.
+\\
+Wenn man (redundanterweise) die Information "Tom kennt Lisa und Lisa kennt Tom" angeben möchte, könnte man auch vom Knoten "Tom" eine Kante zum Knoten "Lisa" ziehen, und vom Knoten "Lisa" eine Kante zum Knoten "Tom". Wenn also zwei Kanten den gleichen Endpunkt haben, so nennt man diese \textit{parallel}.\\
+\\
+Diese Begriffe nochmal in Definitionen zusammengepackt:\\
+\begin{itemize}
+	\item Wenn \(u = v\) für eine Kante \(e = \{u, v\}\) gilt, so heißt diese Kante \textit{Schlinge}.
+	\item Wenn für zwei Kanten \(e, f \in E\) gilt: \(e = f = \{u, v\}\) (gleiche Endknoten), so heißen diese \textit{parallel}. 
+	\item Ein Graph heißt \textit{einfach}, genau dann, wenn er weder Schlingen noch parallele Kanten enthält.
+\end{itemize}
+Unser Beispielgraph mit den Studierenden, welche untereinander befreundet sind, ist hier einfach, da die Informationen, welche Schlingen und parallele Kanten bilden würden, hier redundsnt, beziehungsweise nicht notwendig sind.\\
+
+ \newpage
 
 \end{document}
