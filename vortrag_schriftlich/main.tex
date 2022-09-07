@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb}
-
+\usepackage{amsthm}
 \title{Graphentheorie}
 \author{Franziska Butter}
 \date{September 2022}
@@ -95,8 +95,44 @@ Die Summe der Knotengrade entspricht zweimal der Anzahl der Knoten, also
 \end{equation*}
 \end{exampleblock}
 \bigskip
-\textbf{Beweis.}\\ %%%TODO: Beweis (nochmal) einfügen :/
+\textbf{Beweis.}
 \begin{proof}
-	blablabla
+	Um das Handshaking-Lemma zu beweisen, nehmen wir uns einen endlichen einfachen Graphen und zählen die inzidierenden Paare $(v, e)$ auf jeweils zwei verschiedene Arten und Weisen, um beide Seiten der Gleichung zu erhalten.\\
+	Schauen wir uns zunächst die linke Seite der Gleichung, also $\sum_{v \in V}d(v)$ an. Die Knotengrade $deg(v)$ bilden die Anzahl der Kanten, mit denen die Knoten $v$ jeweils inzidieren. Um sich dies besser zu verdeutlichen, schauen wir uns einmal unseren Beispielgraphen vom Anfang an, jedoch mit der Veränderung, dass Katrin, Tom, Erik und Lisa sich diesmal zu viert verabreden, um sich alle untereinander kennenzulernen. In Falle eines solchen Treffens würden alle vier sich zu Beginn die Hand untereinander geben. Wenn man die Handschläge in einem Graphen darstellen möchte, dann wäre jeder Knoten mit jedem anderen Knoten durch eine Kante verbunden ($deg(v)$ wäre hier also für alle $v$ $3$: jeder Knoten inzidiert jeweils mit $3$ Kanten). Damit zählt $\sum_{v \in V}deg(v)$ also die inzidierenden Paare $(v, e)$ für alle $v$ im Graphen.\\
+	Nun zur linken Seite der Gleichung, also $2 \cdot |E|$. Diese erhält man ganz einfach, indem man sich überlegt, dass jede Kante im Graphen zu genau zwei inzidierenden Paaren gehört, also zu zwei unterschiedlichen Knoten $v_1, v_2$. Dadurch erhält man für jede Kante $e$ des Graphen jeweils die inzidierenden Paare $(v_1, e)$ und $(v_2, e)$. Verdeutlicht am Beispiel bedeutet dies: Zu jedem Handschlag $(e)$ gehören zwei Leute $(v_1, v_2)$ dazu. Also erhält man damit die linke Seite der Gleichung.\\
+	Da nun beide Seiten jeweils die gleiche Menge zählen, nämlich die inzidierenden Paare $(v, e)$, erhält man Gleichheit.
 \end{proof}
+\bigskip
+Nun, da wir dieses doch recht anschauliche Lemma bewiesen haben, folgt sogleich noch eine weitere grundlegende Erkenntnis aus der Graphentheorie: 
+\begin{exampleblock}{Lemma}
+	In einem Graphen ist die Anzahl der Knoten mit \emph{ungeradem Grad} gerade.
+\end{exampleblock}
+Dies mag zunächst etwas technisch wirken, ist jedoch ebenfalls recht einfach zu beweisen:
+\begin{proof}
+	%%%%TODO: Beweis einfügen%%%%
+\end{proof}
+\newpage
+\section{Jeder kennt jeden -- vollständige Graphen}
+Jetzt, mit etwas Grundwissen gewappnet, können wir uns einem weiteren wichtigen Begriff aus der Graphentheorie widmen: den \emph{vollständigen Graphen}.\\
+\begin{block}{Definition}
+	Ein Graph $G = (V, E)$ heißt \emph{vollständig}, wenn jeder Knoten zu jedem anderen benachbart ist.
+	\begin{itemize}
+		\item[$\rightarrow$] Da $G$ nur von $n$ abhängt, bezeichnen wir $G$ als $K_n$.
+		\item[$\rightarrow$] Es gilt: $\delta(G) = \Delta(G)$.
+	\end{itemize}
+\end{block}
+Diese Definition lässt sich leicht veranschaulichen: Im Beispielgraphen vom Anfang erkennt man, dass dies kein vollständiger Graph ist, da sich die vier Studierenden nicht alle untereinander kennen. Ändert man das Beispiel jedoch so ab, wie es beim Beweis des Handshaking-Lemmas getan wurde, erhält man einen vollständigen Graphen: Jeder gibt jedem die Hand, jeder lernt die anderen aus der Gruppe kennen; jeder Knoten ist zu jedem anderen benachbart.\\
+\bigskip
+In diesem Zusammenhang können wir nun einen weiteren Begriff aus dem Reich der vollständigen Graphen kennenlernen -- nämlich \emph{bipartite Graphen}.
+\begin{block}{Definition}
+	Ein Graph $G = (V, E)$ heißt \emph{bipartit}, wenn seine Knoten in zwei Teilmengen an Knoten $A, B \in V$ so zerlegt werden können, dass nur Kanten \emph{zwischen}, aber nicht \emph{innerhalb} einer Knotenmenge verlaufen.
+	\begin{itemize}
+		\item[$\rightarrow$] Falls ein Graph die \emph{maximale Anzahl an Kanten} $m_{\mathrm{max}} = |A| \cdot |B|$ besitzt, nennt man ihn \emph{vollständig bipartit}.
+	\end{itemize}
+\end{block}
+\emph{Frage an den geneigten Leser.}\\
+Ist unser Beispielgraph bipartit? Wäre er es, wenn er vollständig wäre?\\
+\newpage
+\section{Was sind Wege?}
+%%%TODO: blablabla%%% 
 \end{document}
