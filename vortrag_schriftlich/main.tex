@@ -2,6 +2,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb}
 \usepackage{amsthm}
+\newtheorem{theorem}{Satz}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+
 \title{Graphentheorie}
 \author{Franziska Butter}
 \date{September 2022}
@@ -19,8 +23,9 @@
 \section{Was sind Graphen? - Eine Einführung}
 In diesem Paper möchte ich eine erste Einführung zum Thema Graphentheorie geben. Wer noch nie mit dem Thema in Berührung gekommen ist, soll nach dem Studieren dieser Einführung einen grundlegenden Überblick über die Basics bekommen. Hierzu beginnen wir mit den gundlegenden Definitionen, werden uns einsteigende Beispiele anschauen, sowie ein paar erste Sätze.\\
 \bigskip
-\emph{Definition.} 
-            Ein \textbf{Graph} \( G = (V, E)\) besteht aus einer nichtleeren Menge V und einer (möglicherweise leeren) Kantenmenge \(E\), wobei jede Kante \(e \in E\) zwei Knoten \(u, v\) miteinander verbindet.\\
+\begin{definition} 
+            Ein \textbf{Graph} \( G = (V, E)\) besteht aus einer nichtleeren Menge V und einer (möglicherweise leeren) Kantenmenge \(E\), wobei jede Kante \(e \in E\) zwei Knoten \(u, v\) miteinander verbindet.
+\end{definition}
 \bigskip
 Beginnen wir also direkt mit dieser Definition. Zunächst abstrakt wirkend, schauen wir uns doch erst einmal ein Beispiel an:\\
 Angenommen, Katrin, Tom, Erik und Lisa sind vier Studierende. Katrin kennt Tom, Lisa und Erik, Lisa kennt Tom und Katrin, Tom kennt Lisa und Katrin, und Erik kennt Katrin. Zusätzlich kennt jeder natürlich noch sich selbst.\\
@@ -42,7 +47,7 @@ Unser Beispielgraph mit den Studierenden, welche untereinander befreundet sind, 
 
 \nepwage
 Nun wird es zunächst wieder etwas technischer. Wir schauen uns jetzt weiter Beziehungen von Knoten und Kanten untereinander an:\\
-\emph{Definitionen.}
+\begin{definition}
     Sei \(G = (V, E)\) ein Graph, \(u, v \in V\) und \(e \in E\).
     Es gilt jeweils:
     \begin{itemize}
@@ -53,6 +58,7 @@ Nun wird es zunächst wieder etwas technischer. Wir schauen uns jetzt weiter Bez
         \item \textbf{\textit{Nachbar einer Kante}}:
             Zwei Kanten \(e = \{u, v\} \in E\) und \(f = \{v, w\} \in E\) heißen \textit{adjazent/benachbart}, wenn sie einen gemeinsamen Knoten haben.
     \end{itemize}
+\end{definition}
 \bigskip
 Diese Definitionen macht man sich am Besten klar, indem man sich selbst einmal einen Graphen anschaut (dafür eignet sich beispielsweise unser einführendes Beispiel mit den Studierenden).\\
 
@@ -72,7 +78,8 @@ Nun, da die nötigen Grundlagen gelegt sind, kann es auch schon mit der ersten w
 \bigskip
 Bevor wir jedoch dazu kommen, müssen wir erneut eine relevante Definition einführen:\\
 \bigskip
-\emph{Definition.} Sei \(G = (V, E)\) ein Graph. Der \textbf{Grad} \(d(v)\) eines Knotens \(v \in V\) ist die Anzahl des Auftretens von \(v\) als Endknoten einer Kante. Wenn \(G\) einfach ist, so ist \(d(v)\) gleich der Anzahl der Nachbarn von v.\\
+\begin{definition} Sei \(G = (V, E)\) ein Graph. Der \textbf{Grad} \(d(v)\) eines Knotens \(v \in V\) ist die Anzahl des Auftretens von \(v\) als Endknoten einer Kante. Wenn \(G\) einfach ist, so ist \(d(v)\) gleich der Anzahl der Nachbarn von v.
+\end{definition}
 \bigskip
 Diese Definition lässt sich sehr einfach auf unseren Beispielgraphen vom Anfang übertragen: Um beispielsweise den Grad des Knotens "Katrin" zu bestimmen, zählen wir einfach, wie viele Kanten von dem Knoten ausgehen, also, mit wie vielen Studierenden Katrin aus der Gruppe von 4 Menschen befreundet ist, also die Anzahl der Nachbarn des Knoten "Katrin". In diesem Falle sind es \(3\) Kanten, also ist Katrin mit 3 Studierenden (Tom, Erik, Lisa) befreundet.\\
 Das Zählen der Freunde funktioniert aber nur, da G einfach ist. Würde es beispielsweise noch eine Schlinge für "Studierender x kennt sich selbst" geben, so wäre der Knotengrad jeweils die Anzahl der Nachbarn der Knoten \(+1\).\\
@@ -86,11 +93,12 @@ Weiterhin bezeichnen wir für einen Knoten \(v \in V\):
 Was sind jeweils der Minimal- und Maximalgrad des Beispielgraphen?\\
 \bigskip
 Nun können wir auch schon zur versprochenen wichtigen Erkenntnis kommen: Dem Handshaking-Lemma.\\
-\emph{Handshaking-Lemma.}
+\begin{lemma}
 Die Summe der Knotengrade entspricht zweimal der Anzahl der Knoten, also
 \begin{equation*}
 	\sum_{v \in V}d(v) = 2 \cdot |E| = 2m.
 \end{equation*}
+\end{lemma}
 \bigskip
 \begin{proof}{Beweis.}
 	Um das Handshaking-Lemma zu beweisen, nehmen wir uns einen endlichen einfachen Graphen und zählen die inzidierenden Paare $(v, e)$ auf jeweils zwei verschiedene Arten und Weisen, um beide Seiten der Gleichung zu erhalten.\\
@@ -100,8 +108,9 @@ Die Summe der Knotengrade entspricht zweimal der Anzahl der Knoten, also
 \end{proof}
 \bigskip
 Nun, da wir dieses doch recht anschauliche Lemma bewiesen haben, folgt sogleich noch eine weitere grundlegende Erkenntnis aus der Graphentheorie:\\
-\emph{Lemma.}
+\begin{lemma}
 	In einem Graphen ist die Anzahl der Knoten mit \emph{ungeradem Grad} gerade.\\
+\end{lemma}
 \bigskip
 Dies mag zunächst etwas technisch wirken, ist jedoch ebenfalls recht einfach zu beweisen:
 \begin{proof}
@@ -110,43 +119,47 @@ Dies mag zunächst etwas technisch wirken, ist jedoch ebenfalls recht einfach zu
 \newpage
 \section{Jeder kennt jeden -- vollständige Graphen}
 Jetzt, mit etwas Grundwissen gewappnet, können wir uns einem weiteren wichtigen Begriff aus der Graphentheorie widmen: den \emph{vollständigen Graphen}.\\
-\emph{Definition}
+\begin{definition}
 	Ein Graph $G = (V, E)$ heißt \emph{vollständig}, wenn jeder Knoten zu jedem anderen benachbart ist.
 	\begin{itemize}
 		\item[$\rightarrow$] Da $G$ nur von $n$ abhängt, bezeichnen wir $G$ als $K_n$.
 		\item[$\rightarrow$] Es gilt: $\delta(G) = \Delta(G)$.
 	\end{itemize}
+\end{definition}
 \bigskip
 Diese Definition lässt sich leicht veranschaulichen: Im Beispielgraphen vom Anfang erkennt man, dass dies kein vollständiger Graph ist, da sich die vier Studierenden nicht alle untereinander kennen. Ändert man das Beispiel jedoch so ab, wie es beim Beweis des Handshaking-Lemmas getan wurde, erhält man einen vollständigen Graphen: Jeder gibt jedem die Hand, jeder lernt die anderen aus der Gruppe kennen; jeder Knoten ist zu jedem anderen benachbart.\\
 \bigskip
 In diesem Zusammenhang können wir nun einen weiteren Begriff aus dem Reich der vollständigen Graphen kennenlernen -- nämlich \emph{bipartite Graphen}.\\
-\emph{Definition.}\\
+\begin{definition}
 	Ein Graph $G = (V, E)$ heißt \emph{bipartit}, wenn seine Knoten in zwei Teilmengen an Knoten $A, B \in V$ so zerlegt werden können, dass nur Kanten \emph{zwischen}, aber nicht \emph{innerhalb} einer Knotenmenge verlaufen.
 	\begin{itemize}
 		\item[$\rightarrow$] Falls ein Graph die \emph{maximale Anzahl an Kanten} $m_{\mathrm{max}} = |A| \cdot |B|$ besitzt, nennt man ihn \emph{vollständig bipartit}.
 	\end{itemize}
+\end{definition}
 \bigskip
 \emph{Frage an den geneigten Leser.}\\
 Ist unser Beispielgraph bipartit? Wäre er es, wenn er vollständig wäre?\\
 \newpage
 \section{Was sind Wege?}
 Was sind Wege? - eine einfache Frage, würde man sich vielleicht denken, jedoch sind mathematische Wege etwas anderes als das, was wir umgangssprachlich als "Weg" bezeichnen. Bevor wir diese Frage sauber mathematisch beantworten können, müssen wir jedoch zunächst noch etwas Vorarbeit leisten - beginnend mit Teilgraphen:\\
-\emph{Definition.}\\
+\begin{definition}
 	Sei $G = (V, E)$ ein Graph. Ein Graph $G' = (V', E')$ ist ein \emph{Teilgraph} von $G$, wenn $V' \subseteq V$ und $E' \subseteq E$ gilt.
 		\par\bigskip
-	Falls $E'$ jede Kante aus $E$ enthält, die zwei Knoten aus $V'$ verbindet, so sagt man: $G'$ ist ein von $V' \subseteq V$ \emph{induzierter Teilgraph} bzw.\ \emph{Untergraph} von $G$.\\
+	Falls $E'$ jede Kante aus $E$ enthält, die zwei Knoten aus $V'$ verbindet, so sagt man: $G'$ ist ein von $V' \subseteq V$ \emph{induzierter Teilgraph} bzw.\ \emph{Untergraph} von $G$.
+\end{definition}
 Diese Begriffe sind eigentlich selbsterklärend und genau das, wonach sie klingen - quasi Teilmengen des jeweiligen Graphen.\\
 \bigskip
 \emph{Frage an den geneigten Leser.}\\
 Was sind die Teilgraphen unseres Beispielgraphen am Anfang? Welches sind die induzierten Teilgraphen?\\
 \bigskip
 Nun kommen wir zur nächsten Definition, welche wir ebenfalls noch als Vorarbeit benötigen, um schließlich den Begriff des Weges einzuführen:\\
-\emph{Definition.}\\
+\begin{definition}
 	Ein \emph{Kantenzug $Z$} in $G$ ist eine Folge von Knoten und Kanten in $G$, die sich wie folgt hintereinanderschreiben lässt:
 	 \begin{equation*}
 		Z = e_0e_1e_2 \ldots e_k
 	\end{equation*}
-	 wobei $e_i = \{x_i, x_{i+1}\}$ gilt ($x_i \in V$ sind hier die Knoten).\\
+	 wobei $e_i = \{x_i, x_{i+1}\}$ gilt ($x_i \in V$ sind hier die Knoten).
+\end{definition}
 \bigskip
 Ein Kantenzug ist also ebenfalls das, wonach es klingt - man schreibt einfach verschiedene "benachbarte" Kanten hintereinander auf. Dabei ist es wichtig zu erwähnen, dass hierbei gleiche Kanten mehrfach durchlaufen werden dürfen, und Start- und Endknoten eines Kantenzuges sind egal.\\
 \begin{small}
@@ -160,12 +173,13 @@ Ein Kantenzug ist also ebenfalls das, wonach es klingt - man schreibt einfach ve
 \end{small}
 \bigskip
 Nun sind wir soweit, dass wir endlich einen mathematischen Weg definieren können:\\
-\emph{Definition.}\\
+\begin{definition}
 	Sei $Z$ ein Kantenzug. Definiere nun $Z$ als
 	\begin{itemize}
 		\item einen \emph{Weg}: Alle Kanten in $Z$ sind verschieden. Die Knoten $x_0$ und $x_k$ sind die \emph{Endknoten} eines Weges $p$.
 		\item einen \emph{Kreis}: Ein \emph{Kreis} ist ein Weg, bei dem gilt: $x_0 = x_k$ (gleicher Anfangs- und Endknoten).
 	\end{itemize}
+\end{definition}
 \bigskip
 Ein Weg ist also ein Kantenzug, der zwar die gleichen Knoten durchlaufen darf, jedoch keine gleichen Kanten. Bei einem Kreis dürfen ebenfalls gleiche Knoten durchlaufen werden, und Anfangs- und Endknoten müssen zwingend gleich sein.\\
 \bigskip
@@ -173,12 +187,36 @@ Ein Weg ist also ein Kantenzug, der zwar die gleichen Knoten durchlaufen darf, j
 %%%\emph{Frage an den geneigten Leser.}\\
 %%%In welcher Art von (endlichen) Graphen lässt sich immer ein Kreis finden?\\
 Nun, da wir um diese wichtigen Definitionen wissen, gibt es noch eine \emph{einfache} Sache zu beachten;\\
-\emph{Definition.}\\
+\begin{definition}
 	Wir definieren...
 	\begin{itemize}
 		\item \emph{einfacher Weg:} Ein Weg heißt \emph{einfach}, wenn keine doppelten Knoten vorkommen, also kein Knoten doppelt "`durchlaufen"' wird.
 		\item \emph{einfacher Kreis:} Ein Kreis heißt \emph{einfach}, wenn außer dem Endknoten kein Knoten doppelt vorkommt.
 	\end{itemize}
+\end{definition}
 %%%%TODO: Irgendwelche kreativen Beispiele einfügen?
+Kommen wir jetzt zu einer sehr machtvollen Erkenntnis über einfache Wege und einfache Kreise:\\
+\begin{theorem}
+	Jeder Graph $G$ enthält einen einfachen Weg der Länge $\delta(G)$. Falls $\delta(G) \geq 2$ gilt, dann enthält er auch einen einfachen Kreis von mindestens der Länge $\delta(G) + 1$. ($\delta(G)$ ist der Minimalgrad.)
+\end{theorem}
+Wollen wir dies nun beweisen.\\
+\begin{proof}
+	%%%%TODO: blablabla Beweis blablabla
+\end{proof}
+Dies gibt uns die mächtige Erkenntnis, dass wir in jedem (endlichen, einfachen) Graphen einen einfachen Weg und in jedem Graphen mit $\delta(G) \geq 2$ sogar einen einfachen Kreis finden können!\\
+\bigskip
+Zu guter letzt wollen wir uns in diesem Kapitel noch eine Definition anschauen, welche im weiteren Verlauf der Graphentheorie sehr wichtig werden wird: Zusammenhängende Graphen.\\
+\begin{definition}
+	Ein Graph $G$ heißt \emph{zusammenhängend}, wenn zu je zwei Knoten $u, v \in V$ von $G$ ein \emph{Weg} von $u$ nach $v$ existiert.
+	\par\bigskip
+	Nicht zusammenhängende Graphen heißen \emph{unzusammenhängend}.
+	\par\bigskip
+	Eine \emph{Zusammenhangskomponente} $H$ von $G$ ist ein \emph{maximal zusammenhängender Teilgraph} von $G$.
+\end{definition}
+\bigskip
+\emph{Frage an den geneigten Leser.}\\
+Finde einen zusammenhängenden Graphen und stelle diesen graphisch dar.\\
 
+\newpage
+\section[Wozu das Ganze?]{Wozu das Ganze? (Ausblick, Anwendungen)}
 \end{document}
