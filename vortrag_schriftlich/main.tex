@@ -46,7 +46,7 @@ Diese Begriffe nochmal in Definitionen zusammengepackt:\\
 Unser Beispielgraph mit den Studierenden, welche untereinander befreundet sind, ist hier einfach, da die Informationen, welche Schlingen und parallele Kanten bilden würden, hier redundant, beziehungsweise nicht notwendig sind.\\
 
 \newpage
-Nun wird es zunächst wieder etwas technischer. Wir schauen uns jetzt weiter Beziehungen von Knoten und Kanten untereinander an:\\
+Nun wird es zunächst wieder etwas technischer. Kanten und Knoten untereinander können auf drei verschiedene Arten und Weisen miteinander in Beziehung stehen. Schauen wir uns diese an:\\
 \begin{definition}
     Sei \(G = (V, E)\) ein Graph, \(u, v \in V\) und \(e \in E\).
     Es gilt jeweils:
@@ -60,8 +60,10 @@ Nun wird es zunächst wieder etwas technischer. Wir schauen uns jetzt weiter Bez
     \end{itemize}
 \end{definition}
 \bigskip
+\emph{Frage an den geneigten Leser.} Finde ein Beispiel für einen unendlichen Graphen.
+\biskip
 Diese Definitionen macht man sich am Besten klar, indem man sich selbst einmal einen Graphen anschaut (dafür eignet sich beispielsweise unser einführendes Beispiel mit den Studierenden).\\
-
+%%%%TODO: Bild einfügen + überarbeiten!
 \subsection{Konventionen}
 Bevor wir uns weiter in der Welt der Graphentheorie hervortasten, zunächst ein paar Konventionen, die wir festlegen:
 \begin{itemize}
@@ -107,14 +109,25 @@ Die Summe der Knotengrade entspricht zweimal der Anzahl der Knoten, also
 	Da nun beide Seiten jeweils die gleiche Menge zählen, nämlich die inzidierenden Paare $(v, e)$, erhält man Gleichheit.
 \end{proof}
 \bigskip
-Nun, da wir dieses doch recht anschauliche Lemma bewiesen haben, folgt sogleich noch eine weitere grundlegende Erkenntnis aus der Graphentheorie:\\
+Aus dem doch recht anschaulichen Handshaking-Lemma können wir als nächstes eine Erkenntnis folgern:\\
 \begin{lemma}
 	In einem Graphen ist die Anzahl der Knoten mit \emph{ungeradem Grad} gerade.\\
 \end{lemma}
 \bigskip
 Dies mag zunächst etwas technisch wirken, ist jedoch ebenfalls recht einfach zu beweisen:
 \begin{proof}
-	%%%%TODO: Beweis einfügen%%%%
+	Die Beweisidee hier ist, die Summe auf der linken Seite des Handshaking-Lemma aufzuspalten:\\
+	Aus $\sum_{v \in V}d(v) = 2 \cdot |E|$ können wir zunächst folgern, dass die Summe aller Knotengrade immer eine gerade Zahl sein muss.Sei $V$ die Knotenmenge. Nun teilen wir diese in zwei Teilmengen auf:
+		\begin{itemize}
+			\item{$V_1$:= Die Menge aller Knoten mit ungeradem Knotengrad.}
+			\item{$V_2$:= Die Menge aller Knoten mit geradem Knotengrad.}
+		\end{itemize}
+	Nun können wir folgende Umformung machen:
+		\begin{align*}
+			&2\text{m} &= \sum_{v \in V}d(v) &= \sum_{v \in V_1} + \sum{v \in V_2}d(v)\\
+			&\leftrightarrow \underbrace{2m - \sum_{v \in V_2}d(v)}_{\text{gerade}} &= \sum_{v \in V_1}\underbrace{d(v)}_{\text{ungerade, da in $V_1$}}\\
+		\end{align*}
+	Die linke Seite der Gleichung ist offensichtlich gerade. Nicht so ganz trivial zu sehen ist, warum die rechte Seite der Summe ebenfalls gerade sein sollte: Dies muss der Fall sein, da sonst die Gleichung nicht erfüllt werden könnte. Eine Summe von ungeraden Summanden muss zwingend gerade sein, da sonst die linke Seite ebenfalls nicht gerade wäre. Es muss eine gerade Anzahl ovn ungeraden Summanden aufsummiert werden, damit eine Summe gerade wird. Somit ist $|V_1|$ gerade.
 \end{proof}
 \newpage
 \section{Jeder kennt jeden -- vollständige Graphen}
