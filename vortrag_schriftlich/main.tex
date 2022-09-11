@@ -131,20 +131,23 @@ Dies mag zunächst etwas technisch wirken, ist jedoch ebenfalls recht einfach zu
 \end{proof}
 \newpage
 \section{Jeder kennt jeden -- vollständige Graphen}
-Jetzt, mit etwas Grundwissen gewappnet, können wir uns einem weiteren wichtigen Begriff aus der Graphentheorie widmen: den \emph{vollständigen Graphen}.\\
+Jetzt, mit etwas Grundwissen ausgestattet, können wir uns einer sehr wichtigen Klasse an Graphen widmen: den \emph{vollständigen Graphen}.\\
 \begin{definition}
 	Ein Graph $G = (V, E)$ heißt \emph{vollständig}, wenn jeder Knoten zu jedem anderen benachbart ist.
 	\begin{itemize}
 		\item[$\rightarrow$] Da $G$ nur von $n$ abhängt, bezeichnen wir $G$ als $K_n$.
-		\item[$\rightarrow$] Es gilt: $\delta(G) = \Delta(G)$.
+		\item[$\rightarrow$] Eine offensichtliche Folgerung daraus ist: $\delta(G) = \Delta(G)$.
 	\end{itemize}
 \end{definition}
 \bigskip
 Diese Definition lässt sich leicht veranschaulichen: Im Beispielgraphen vom Anfang erkennt man, dass dies kein vollständiger Graph ist, da sich die vier Studierenden nicht alle untereinander kennen. Ändert man das Beispiel jedoch so ab, wie es beim Beweis des Handshaking-Lemmas getan wurde, erhält man einen vollständigen Graphen: Jeder gibt jedem die Hand, jeder lernt die anderen aus der Gruppe kennen; jeder Knoten ist zu jedem anderen benachbart.\\
+%%%%TODO: Bild einfügen
+\bigskip
+\emph{Frage an den geneigten Leser.} Folgere aus dem Handshaking-Lemma: Was ist die Anzahl an Kanten in einem (endlichen) vollständigen Graphen? Warum ist das so?\footnote[1]{Den Beweis hierzu gibt's am Ende des Papers.}\\
 \bigskip
 In diesem Zusammenhang können wir nun einen weiteren Begriff aus dem Reich der vollständigen Graphen kennenlernen -- nämlich \emph{bipartite Graphen}.\\
 \begin{definition}
-	Ein Graph $G = (V, E)$ heißt \emph{bipartit}, wenn seine Knoten in zwei Teilmengen an Knoten $A, B \in V$ so zerlegt werden können, dass nur Kanten \emph{zwischen}, aber nicht \emph{innerhalb} einer Knotenmenge verlaufen.
+	Ein Graph $G = (V, E)$ heißt \emph{bipartit}, wenn seine Knoten in zwei Teilmengen an Knoten $A, B \in V$ so zerlegt werden können, dass nur Kanten \emph{zwischen}, aber nicht \emph{innerhalb} einer Knotenmenge verlaufen. Anders gesagt bedeutet das also: In einer jeweiligen Teilmenge $A, B$ existieren keine zueinander benachbarten Knoten.
 	\begin{itemize}
 		\item[$\rightarrow$] Falls ein Graph die \emph{maximale Anzahl an Kanten} $m_{\mathrm{max}} = |A| \cdot |B|$ besitzt, nennt man ihn \emph{vollständig bipartit}.
 	\end{itemize}
@@ -152,6 +155,9 @@ In diesem Zusammenhang können wir nun einen weiteren Begriff aus dem Reich der 
 \bigskip
 \emph{Frage an den geneigten Leser.}\\
 Ist unser Beispielgraph bipartit? Wäre er es, wenn er vollständig wäre?\\
+\bigskip
+Schauen wir uns zu bipartiten Graphen einmal ein wichtiges Beispiel aus der Graphentheorie an: Den Würfelgraphen:\\
+%%%%TODO: Bild hier einfügen
 \newpage
 \section{Was sind Wege?}
 Was sind Wege? - eine einfache Frage, würde man sich vielleicht denken, jedoch sind mathematische Wege etwas anderes als das, was wir umgangssprachlich als "Weg" bezeichnen. Bevor wir diese Frage sauber mathematisch beantworten können, müssen wir jedoch zunächst noch etwas Vorarbeit leisten - beginnend mit Teilgraphen:\\
@@ -160,12 +166,13 @@ Was sind Wege? - eine einfache Frage, würde man sich vielleicht denken, jedoch 
 		\par\bigskip
 	Falls $E'$ jede Kante aus $E$ enthält, die zwei Knoten aus $V'$ verbindet, so sagt man: $G'$ ist ein von $V' \subseteq V$ \emph{induzierter Teilgraph} bzw.\ \emph{Untergraph} von $G$.
 \end{definition}
-Diese Begriffe sind eigentlich selbsterklärend und genau das, wonach sie klingen - quasi Teilmengen des jeweiligen Graphen.\\
+Um diese Definitionen besser nachvollziehen zu können, hierzu einmal ein paar Beispiele:\\
+%%%%TODO: Beispiele von Teilgraphen einfügen, siehe notes
 \bigskip
 \emph{Frage an den geneigten Leser.}\\
 Was sind die Teilgraphen unseres Beispielgraphen am Anfang? Welches sind die induzierten Teilgraphen?\\
 \bigskip
-Nun kommen wir zur nächsten Definition, welche wir ebenfalls noch als Vorarbeit benötigen, um schließlich den Begriff des Weges einzuführen:\\
+Nun kommen wir zur nächsten Definition, welche wir ebenfalls noch als Vorarbeit benötigen, um schließlich den Begriff des Weges -- eine weitere sehr Wichtige Klasse an Teilgraphen -- einzuführen:\\
 \begin{definition}
 	Ein \emph{Kantenzug $Z$} in $G$ ist eine Folge von Knoten und Kanten in $G$, die sich wie folgt hintereinanderschreiben lässt:
 	 \begin{equation*}
@@ -174,7 +181,7 @@ Nun kommen wir zur nächsten Definition, welche wir ebenfalls noch als Vorarbeit
 	 wobei $e_i = \{x_i, x_{i+1}\}$ gilt ($x_i \in V$ sind hier die Knoten).
 \end{definition}
 \bigskip
-Ein Kantenzug ist also ebenfalls das, wonach es klingt - man schreibt einfach verschiedene "benachbarte" Kanten hintereinander auf. Dabei ist es wichtig zu erwähnen, dass hierbei gleiche Kanten mehrfach durchlaufen werden dürfen, und Start- und Endknoten eines Kantenzuges sind egal.\\
+Ein Kantenzug ist also genau das, wonach es klingt - man schreibt einfach verschiedene "benachbarte" Kanten hintereinander auf. Dabei ist es wichtig zu erwähnen, dass hierbei gleiche Kanten mehrfach durchlaufen werden dürfen, und Start- und Endknoten eines Kantenzuges sind egal.\\
 \begin{small}
 	\begin{emph}
 		Es ist anzumerken, dass der Kantenzug alternativ auch noch so definiert werden kann:\\
@@ -194,11 +201,17 @@ Nun sind wir soweit, dass wir endlich einen mathematischen Weg definieren könne
 	\end{itemize}
 \end{definition}
 \bigskip
-Ein Weg ist also ein Kantenzug, der zwar die gleichen Knoten durchlaufen darf, jedoch keine gleichen Kanten. Bei einem Kreis dürfen ebenfalls gleiche Knoten durchlaufen werden, und Anfangs- und Endknoten müssen zwingend gleich sein.\\
+Ein Weg ist also ein Kantenzug, der zwar die gleichen Knoten durchlaufen darf, jedoch keine gleichen Kanten. Bei einem Kreis dürfen ebenfalls gleiche Knoten durchlaufen werden, und Anfangs- und Endknoten müssen zwingend gleich sein, also $x_0 = x_k$.\\
+\bigskip
+Aus dieser Definition folgt sofort:
+\begin{definition}
+	Die \emph{Länge} eines Weges ist die Anzahl der Kanten im Kantenzug, der den Weg definiert.
+\end{definition}
 \bigskip
 %%%TODO: Ist das richtig?
 %%%\emph{Frage an den geneigten Leser.}\\
 %%%In welcher Art von (endlichen) Graphen lässt sich immer ein Kreis finden?\\
+%%%%TODO: Beispielgraphen von Wegen, Kreisen und Kantenzügen einfügen
 Nun, da wir um diese wichtigen Definitionen wissen, gibt es noch eine \emph{einfache} Sache zu beachten;\\
 \begin{definition}
 	Wir definieren...
@@ -224,8 +237,9 @@ Zu guter letzt wollen wir uns in diesem Kapitel noch eine Definition anschauen, 
 	\par\bigskip
 	Nicht zusammenhängende Graphen heißen \emph{unzusammenhängend}.
 	\par\bigskip
-	Eine \emph{Zusammenhangskomponente} $H$ von $G$ ist ein \emph{maximal zusammenhängender Teilgraph} von $G$.
+	Eine \emph{Zusammenhangskomponente} $H$ von $G$ ist ein \emph{maximal zusammenhängender Teilgraph} von $G$.\footnote[2]{Intuitiv bedeutet das also: $H$ ist eine Zusammenhangskomponente genau dann, wenn H selbst zusammenhängend ist, und \emph{kein Weg aus H herausführt},also keine Knoten in H von Wegen außerhalb von H erreichbar sind.}
 \end{definition}
+Man kann sich zum besseren Verständnis dieser nun doch recht abstrakten Definitionen vorstellen: Zusammenhangskomponenten sind quasi das "Gegenstück" zu bipartiten Graphen \footnote[3]{Ausnahme hierbei bilden isolierte Punkte als Graph.}.
 \bigskip
 \emph{Frage an den geneigten Leser.}\\
 Finde einen zusammenhängenden Graphen und stelle diesen graphisch dar.\\
