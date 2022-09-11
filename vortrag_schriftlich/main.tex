@@ -61,7 +61,7 @@ Nun wird es zunächst wieder etwas technischer. Kanten und Knoten untereinander 
 \end{definition}
 \bigskip
 \emph{Frage an den geneigten Leser.} Finde ein Beispiel für einen unendlichen Graphen.
-\biskip
+\bigskip
 Diese Definitionen macht man sich am Besten klar, indem man sich selbst einmal einen Graphen anschaut (dafür eignet sich beispielsweise unser einführendes Beispiel mit den Studierenden).\\
 %%%%TODO: Bild einfügen + überarbeiten!
 \subsection{Konventionen}
@@ -124,8 +124,8 @@ Dies mag zunächst etwas technisch wirken, ist jedoch ebenfalls recht einfach zu
 		\end{itemize}
 	Nun können wir folgende Umformung machen:
 		\begin{align*}
-			&2\text{m} &= \sum_{v \in V}d(v) &= \sum_{v \in V_1} + \sum{v \in V_2}d(v)\\
-			&\leftrightarrow \underbrace{2m - \sum_{v \in V_2}d(v)}_{\text{gerade}} &= \sum_{v \in V_1}\underbrace{d(v)}_{\text{ungerade, da in $V_1$}}\\
+			&2\text{m} = \sum_{v \in V}d(v) = \sum_{v \in V_1} + \sum{v \in V_2}d(v)\\
+			&\Leftrightarrow \underbrace{2m - \sum_{v \in V_2}d(v)}_{\text{gerade}} = \sum_{v \in V_1}\underbrace{d(v)}_{\text{ungerade, da in $V_1$}}\\
 		\end{align*}
 	Die linke Seite der Gleichung ist offensichtlich gerade. Nicht so ganz trivial zu sehen ist, warum die rechte Seite der Summe ebenfalls gerade sein sollte: Dies muss der Fall sein, da sonst die Gleichung nicht erfüllt werden könnte. Eine Summe von ungeraden Summanden muss zwingend gerade sein, da sonst die linke Seite ebenfalls nicht gerade wäre. Es muss eine gerade Anzahl ovn ungeraden Summanden aufsummiert werden, damit eine Summe gerade wird. Somit ist $|V_1|$ gerade.
 \end{proof}
