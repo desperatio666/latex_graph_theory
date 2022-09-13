@@ -220,17 +220,27 @@ Nun, da wir um diese wichtigen Definitionen wissen, gibt es noch eine \emph{einf
 %%%%TODO: Irgendwelche kreativen Beispiele einfügen?
 Kommen wir jetzt zu einer sehr machtvollen Erkenntnis über einfache Wege und einfache Kreise:\\
 \begin{theorem}
-	Jeder Graph $G$ enthält einen einfachen Weg der Länge $\delta(G)$. Falls $\delta(G) \geq 2$ gilt, dann enthält er auch einen einfachen Kreis von mindestens der Länge $\delta(G) + 1$. ($\delta(G)$ ist der Minimalgrad.)
+	Jeder Graph $G$ enthält einen einfachen Weg der Länge $\delta(G)$. \emph{(I.)} Falls $\delta(G) \geq 2$ gilt, dann enthält er auch einen einfachen Kreis von mindestens der Länge $\delta(G) + 1$. ($\delta(G)$ ist der Minimalgrad.) \emph{(II.)}
 \end{theorem}
 Wollen wir dies nun beweisen.\\
 \begin{proof}
-	%%%%TODO: blablabla Beweis blablabla
+	Sei $G = (V, E)$ ein Graph. Wir wollen zunächst Teil (I.), und dann Teil (II.) beweisen.\\
+	\emph{Teil (I.)} Sei $G' = (V', E')$ ein Teilgraph von G, der jeweils die Knoten und Kanten mit $\delta(G)$ enthält. Wenn $\delta(G) = 1$ gilt, dann ist klar, dass unsere Aussage wahr ist: Dann besteht unser Teilgraph $G'$ nämlich nur aus zwei Knoten und einer Kante, und unser Weg $p$ lautet $p = ae_0b$, wobei $a, b \in V'$ und $e_0 \in E'$.\\
+	Sei nun $p = x_0 \ldots x_k$ ein längster einfacher Weg in $G$. Wir nehmen nun an, dass $x_k$ einen Nachbarn $a$ hat, welcher nicht auf $p$ liegt. Dies bedeutet nun aber, dass $p$ um die Kante $\{x_k, a\}$ verlängert werden muss, sonst wäre $a$ kein Nachbar von $x_k$.\\
+	Nun haben wir also einen neuen Weg $\bar{p} = x_0 \ldots x_k a$. Trivialerweise ist $\bar{p}$ ein längerer Weg als $p$, da $\bar{p}$ um eine Kante länger ist.\\
+	Dies erschafft jedoch einen Widerspruch dazu, dass $p$ der längste einfache Weg ist, denn nun ist es $bar{p}$.\\
+	\Rightarrow Daraus können wir folgern, dass alle Nachbarn von $x_k$ auf $p$ liegen müssen, denn würden sie es nicht, wäre $p$ kein längster einfacher Weg mehr.\\
+	\Rightarrow Es gilt: $$k \ge \text{d}(x_k) \geq \delta(G)$$.\\
+	\emph{Teil (II.)} Sei nun $x_i$ ein Nachbar von $x_0$, der am weitesten entfernt von $x_0$ liegt. %%%%TODO: Bild einfügen%%%%
+	Aus Teil \emph{(I.)} folgern wir: Alle Nachbarn von $x_0$ liegen auf $p = x_0 \ldots x_i \ldots x_k$.\\
+	\Rightarrow Ein einfacher Weg $p' = x_0 x_1 \ldots x_i$ hat mindestens eine Länge von $\delta(G) \geq 2$.\\
+	\Rightarrow Dadurch entsteht auch ein einfacher Kreis $k = x_0 \ldots x_i x_0$ von mindestens der Länge $\delta(G) + 1 \geq 3$, bei dem keine Kante und kein Knoten doppelt durchlaufen werden, womit wir unsere Aussage bewiesen haben.
 \end{proof}
 Dies gibt uns die mächtige Erkenntnis, dass wir in jedem (endlichen, einfachen) Graphen einen einfachen Weg und in jedem Graphen mit $\delta(G) \geq 2$ sogar einen einfachen Kreis finden können!\\
 \bigskip
 Zu guter letzt wollen wir uns in diesem Kapitel noch eine Definition anschauen, welche im weiteren Verlauf der Graphentheorie sehr wichtig werden wird: Zusammenhängende Graphen.\\
 \begin{definition}
-	Ein Graph $G$ heißt \emph{zusammenhängend}, wenn zu je zwei Knoten $u, v \in V$ von $G$ ein \emph{Weg} von $u$ nach $v$ existiert.
+	Ein Graph $G$ heißt \emph{zusammenhängend}, wenn zu je zwei Knoten $u, v \in V$ von $G$ ein \emph{Weg} von $u$ nach $v$ existiert (mit $u$ als Anfangs- und $v$ als Endknoten).
 	\par\bigskip
 	Nicht zusammenhängende Graphen heißen \emph{unzusammenhängend}.
 	\par\bigskip
