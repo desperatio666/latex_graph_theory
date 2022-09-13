@@ -3,6 +3,8 @@
 \usepackage{amsmath, amssymb}
 \usepackage{amsthm}
 \usepackage{graphicx}
+\graphicspath{ {./images/} }
+
 \newtheorem{theorem}{Satz}
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
@@ -32,6 +34,7 @@ Angenommen, Katrin, Tom, Erik und Lisa sind vier Studierende. Katrin kennt Tom, 
 Diese Freundschaften kann man nun in einem mathematischen Graphen betrachten. Jeder Studierende ist hierbei ein Knoten \(v\) , und jede Freundschaft zwischen zwei Knoten bildet eine Kante \(e\). Zusammen bilden alle Knoten die Knotenmenge \(V\), und alle Kanten die Kantenmenge \(E\).\\
 Zusammen bilden \((V, E)\) den Graphen \(G\), welchen man graphisch darstellen kann.\\
 \bigskip
+\includegraphics{graph_one}
 Nun könne die Knoten und Kanten jeweils verschiedene Beziehungen zueinander haben.\\
 Um auf unser Beispiel zurückzukommen: Eine triviale, jedoch erwähnenswerte Erscheinung ist noch, dass jeder sich selbst kennt. Übersetzt in die Sprache der Graphentheorie bedeutet dies, dass eine Kante den gleichen Endpunkt hat. Dieses Phänomen nennt man \textbf{Schlinge}.
 \bigskip
@@ -43,6 +46,7 @@ Diese Begriffe nochmal in Definitionen zusammengepackt:\\
 	\item Wenn für zwei Kanten \(e, f \in E\) gilt: \(e = f = \{u, v\}\) (gleiche Endknoten), so heißen diese \textit{parallel}. 
 	\item Ein Graph heißt \textit{einfach}, genau dann, wenn er weder Schlingen noch parallele Kanten enthält.
 \end{itemize}
+\includegraphics{graph_two}
 Unser Beispielgraph mit den Studierenden, welche untereinander befreundet sind, ist hier einfach, da die Informationen, welche Schlingen und parallele Kanten bilden würden, hier redundant, beziehungsweise nicht notwendig sind.\\
 
 \newpage
@@ -141,7 +145,7 @@ Jetzt, mit etwas Grundwissen ausgestattet, können wir uns einer sehr wichtigen 
 \end{definition}
 \bigskip
 Diese Definition lässt sich leicht veranschaulichen: Im Beispielgraphen vom Anfang erkennt man, dass dies kein vollständiger Graph ist, da sich die vier Studierenden nicht alle untereinander kennen. Ändert man das Beispiel jedoch so ab, wie es beim Beweis des Handshaking-Lemmas getan wurde, erhält man einen vollständigen Graphen: Jeder gibt jedem die Hand, jeder lernt die anderen aus der Gruppe kennen; jeder Knoten ist zu jedem anderen benachbart.\\
-%%%%TODO: Bild einfügen
+\includegraphics{three_h_lemma}
 \bigskip
 \emph{Frage an den geneigten Leser.} Folgere aus dem Handshaking-Lemma: Was ist die Anzahl an Kanten in einem (endlichen) vollständigen Graphen? Warum ist das so?\footnote[1]{Den Beweis hierzu gibt's am Ende des Papers.}\\
 \bigskip
@@ -152,12 +156,11 @@ In diesem Zusammenhang können wir nun einen weiteren Begriff aus dem Reich der 
 		\item[$\rightarrow$] Falls ein Graph die \emph{maximale Anzahl an Kanten} $m_{\mathrm{max}} = |A| \cdot |B|$ besitzt, nennt man ihn \emph{vollständig bipartit}.
 	\end{itemize}
 \end{definition}
-\bigskip
-\emph{Frage an den geneigten Leser.}\\
-Ist unser Beispielgraph bipartit? Wäre er es, wenn er vollständig wäre?\\
+Um zu verdeutlichen, wie ein bipartiter Graph aussieht, hier folgendes Beispiel:\\
+\includgegraphics{bipartit}
 \bigskip
 Schauen wir uns zu bipartiten Graphen einmal ein wichtiges Beispiel aus der Graphentheorie an: Den Würfelgraphen:\\
-%%%%TODO: Bild hier einfügen
+\includegraphics{wuerfelgraph}
 \newpage
 \section{Was sind Wege?}
 Was sind Wege? - eine einfache Frage, würde man sich vielleicht denken, jedoch sind mathematische Wege etwas anderes als das, was wir umgangssprachlich als "Weg" bezeichnen. Bevor wir diese Frage sauber mathematisch beantworten können, müssen wir jedoch zunächst noch etwas Vorarbeit leisten - beginnend mit Teilgraphen:\\
@@ -167,7 +170,7 @@ Was sind Wege? - eine einfache Frage, würde man sich vielleicht denken, jedoch 
 	Falls $E'$ jede Kante aus $E$ enthält, die zwei Knoten aus $V'$ verbindet, so sagt man: $G'$ ist ein von $V' \subseteq V$ \emph{induzierter Teilgraph} bzw.\ \emph{Untergraph} von $G$.
 \end{definition}
 Um diese Definitionen besser nachvollziehen zu können, hierzu einmal ein paar Beispiele:\\
-%%%%TODO: Beispiele von Teilgraphen einfügen, siehe notes
+\includegraphics{teilgraph}
 \bigskip
 Nun kommen wir zur nächsten Definition, welche wir ebenfalls noch als Vorarbeit benötigen, um schließlich den Begriff des Weges -- eine weitere sehr Wichtige Klasse an Teilgraphen -- einzuführen:\\
 \begin{definition}
@@ -208,7 +211,7 @@ Aus dieser Definition folgt sofort:
 %%%TODO: Ist das richtig?
 %%%\emph{Frage an den geneigten Leser.}\\
 %%%In welcher Art von (endlichen) Graphen lässt sich immer ein Kreis finden?\\
-%%%%TODO: Beispielgraphen von Wegen, Kreisen und Kantenzügen einfügen
+\includegraphics{kantenzug_weg}
 Nun, da wir um diese wichtigen Definitionen wissen, gibt es noch eine \emph{einfache} Sache zu beachten;\\
 \begin{definition}
 	Wir definieren...
@@ -217,7 +220,6 @@ Nun, da wir um diese wichtigen Definitionen wissen, gibt es noch eine \emph{einf
 		\item \emph{einfacher Kreis:} Ein Kreis heißt \emph{einfach}, wenn außer dem Endknoten kein Knoten doppelt vorkommt.
 	\end{itemize}
 \end{definition}
-%%%%TODO: Irgendwelche kreativen Beispiele einfügen?
 Kommen wir jetzt zu einer sehr machtvollen Erkenntnis über einfache Wege und einfache Kreise:\\
 \begin{theorem}
 	Jeder Graph $G$ enthält einen einfachen Weg der Länge $\delta(G)$. \emph{(I.)} Falls $\delta(G) \geq 2$ gilt, dann enthält er auch einen einfachen Kreis von mindestens der Länge $\delta(G) + 1$. ($\delta(G)$ ist der Minimalgrad.) \emph{(II.)}
@@ -231,7 +233,8 @@ Wollen wir dies nun beweisen.\\
 	Dies erschafft jedoch einen Widerspruch dazu, dass $p$ der längste einfache Weg ist, denn nun ist es $bar{p}$.\\
 	\Rightarrow Daraus können wir folgern, dass alle Nachbarn von $x_k$ auf $p$ liegen müssen, denn würden sie es nicht, wäre $p$ kein längster einfacher Weg mehr.\\
 	\Rightarrow Es gilt: $$k \ge \text{d}(x_k) \geq \delta(G)$$.\\
-	\emph{Teil (II.)} Sei nun $x_i$ ein Nachbar von $x_0$, der am weitesten entfernt von $x_0$ liegt. %%%%TODO: Bild einfügen%%%%
+	\emph{Teil (II.)} Sei nun $x_i$ ein Nachbar von $x_0$, der am weitesten entfernt von $x_0$ liegt. Vorstellen kann man sich diese Konstruktion wie folgt:\\
+	\includegraphics{proof_thm}
 	Aus Teil \emph{(I.)} folgern wir: Alle Nachbarn von $x_0$ liegen auf $p = x_0 \ldots x_i \ldots x_k$.\\
 	\Rightarrow Ein einfacher Weg $p' = x_0 x_1 \ldots x_i$ hat mindestens eine Länge von $\delta(G) \geq 2$.\\
 	\Rightarrow Dadurch entsteht auch ein einfacher Kreis $k = x_0 \ldots x_i x_0$ von mindestens der Länge $\delta(G) + 1 \geq 3$, bei dem keine Kante und kein Knoten doppelt durchlaufen werden, womit wir unsere Aussage bewiesen haben.
@@ -248,8 +251,8 @@ Zu guter letzt wollen wir uns in diesem Kapitel noch eine Definition anschauen, 
 \end{definition}
 Man kann sich zum besseren Verständnis dieser nun doch recht abstrakten Definitionen vorstellen: Zusammenhangskomponenten sind quasi das "Gegenstück" zu bipartiten Graphen \footnote[3]{Ausnahme hierbei bilden isolierte Punkte als Graph.}.
 \bigskip
-\emph{Frage an den geneigten Leser.}\\
-Finde einen zusammenhängenden Graphen und stelle diesen graphisch dar.\\
+Um sich besser vorstellen zu können, was diese Definitionen eigentlich meinen, hier ein Beispiel:\\
+\includegraphics{zsmhaengend}
 
 \newpage
 \section[Wozu das Ganze?]{Wozu das Ganze? (Ausblick, Anwendungen)}
@@ -270,6 +273,21 @@ Die Graphentheorie hat sehr viele Anwendungen im "echten Leben". Dies mag vielle
 	\item{Äquivalenzreaktionen in der Mathematik. Hierbei sind die Knoten die jeweiligen Elemente, und die Kanten zeigen an, welche zwei Elemente jeweils in Relation zueinander stehen.}
 \end{itemize}
 Wie wir sehen, sind die Anwendungen der Graphentheorie sehr vielfältig: Wir finden sie fast überall in der Wissenschaft, spezifisch vor allem in der Informatik.\\
-%%%%TODO: schlusssatz finden o.O
+\hrule
+Dies bringt unseren kleinen Ausflug in die Graphentheorie zu einem Ende. Da die Basics nun gelegt sind, kann man sich nun in die weiteren Tiefen dieses Themengebietes stürzen.
+\newpage
+\begin{small}
+	Die versprochenen Auflösung zu der kleinen Aufgabe gibt's hier:\\
+	\begin{proof}
+		Wir wollen also die Anzahl an Kanten in $G$ feststellen, falls $G$ ein vollständiger Graph ist.\\
+		Dies machen wir mit folgender Überlegung:\\
+		Wir wissen, dass in vollständigen Graphen gilt: Der minimalste Knotengrad ist gleich dem maximalsten Knotengrad. Ein vollständiger Graph $G$ hat $n$ Gesamtknoten. Mit diesen Informationen haben wir:\\
+		\begin{equation*}
+			\underbrace{\sum_{v \in V} \text{d(v)}}_{\text{linke Seite des Handshaking-Lemmas}} = \sum_{v \in V}\Delta(G) = \sum_{v \in V} n - 1 = \sum n \cdot (n - 1) = \underbrace{2m}_{\text{rechte Seite des Handshaking-Lemmas}}.
+		\end{equation*}
+		Aus diesen Gleichheiten erhält man nun durch einfache Umformung:\\
+		$$m = \frac{n(n - 1)}{2}$$
+		Und somit haben wir die Gesamtanzahl in einem vollständigen Graphen erhalten und sind fertig.
+	\end{proof}
+\end{small}
 \end{document}
-%%%%TODO: Graphen einfügen!!!
