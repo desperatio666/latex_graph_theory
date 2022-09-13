@@ -1,13 +1,15 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
 \usepackage{amsmath, amssymb}
 \usepackage{amsthm}
 \usepackage{graphicx}
-\graphicspath{ {./images/} }
+\graphicspath{ {images/} }
 
 \newtheorem{theorem}{Satz}
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
+\addto\captionsgerman{\renewcommand{\figurename}{Abbildung}}
 
 \title{Graphentheorie}
 \author{Franziska Butter}
@@ -34,7 +36,13 @@ Angenommen, Katrin, Tom, Erik und Lisa sind vier Studierende. Katrin kennt Tom, 
 Diese Freundschaften kann man nun in einem mathematischen Graphen betrachten. Jeder Studierende ist hierbei ein Knoten \(v\) , und jede Freundschaft zwischen zwei Knoten bildet eine Kante \(e\). Zusammen bilden alle Knoten die Knotenmenge \(V\), und alle Kanten die Kantenmenge \(E\).\\
 Zusammen bilden \((V, E)\) den Graphen \(G\), welchen man graphisch darstellen kann.\\
 \bigskip
-\includegraphics{graph_one}
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=8cm]{vortrag_schriftlich/images/graph_one.drawio.png}
+    \caption{Katrin, Lisa, Tom und Erik kennen sich untereinander. Aber: Nicht jeder kennt jeden!}
+    \label{fig:fig1}
+\end{figure}
+\newpage
 Nun könne die Knoten und Kanten jeweils verschiedene Beziehungen zueinander haben.\\
 Um auf unser Beispiel zurückzukommen: Eine triviale, jedoch erwähnenswerte Erscheinung ist noch, dass jeder sich selbst kennt. Übersetzt in die Sprache der Graphentheorie bedeutet dies, dass eine Kante den gleichen Endpunkt hat. Dieses Phänomen nennt man \textbf{Schlinge}.
 \bigskip
@@ -46,7 +54,12 @@ Diese Begriffe nochmal in Definitionen zusammengepackt:\\
 	\item Wenn für zwei Kanten \(e, f \in E\) gilt: \(e = f = \{u, v\}\) (gleiche Endknoten), so heißen diese \textit{parallel}. 
 	\item Ein Graph heißt \textit{einfach}, genau dann, wenn er weder Schlingen noch parallele Kanten enthält.
 \end{itemize}
-\includegraphics{graph_two}
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=8cm]{vortrag_schriftlich/images/graph_two.drawio.png}
+    \caption{Schlingen und parallele Kanten.}
+    \label{fig:fig2}
+\end{figure}
 Unser Beispielgraph mit den Studierenden, welche untereinander befreundet sind, ist hier einfach, da die Informationen, welche Schlingen und parallele Kanten bilden würden, hier redundant, beziehungsweise nicht notwendig sind.\\
 
 \newpage
@@ -113,6 +126,13 @@ Die Summe der Knotengrade entspricht zweimal der Anzahl der Knoten, also
 	Da nun beide Seiten jeweils die gleiche Menge zählen, nämlich die inzidierenden Paare $(v, e)$, erhält man Gleichheit.
 \end{proof}
 \bigskip
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=8cm]{vortrag_schriftlich/images/three_h_lemma.drawio.png}
+    \caption{Die  Studierenden treffen sich allesamt: Jeder gibt jedem die Hand.}
+    \label{fig:fig3}
+\end{figure}
+\newpage
 Aus dem doch recht anschaulichen Handshaking-Lemma können wir als nächstes eine Erkenntnis folgern:\\
 \begin{lemma}
 	In einem Graphen ist die Anzahl der Knoten mit \emph{ungeradem Grad} gerade.\\
@@ -145,7 +165,6 @@ Jetzt, mit etwas Grundwissen ausgestattet, können wir uns einer sehr wichtigen 
 \end{definition}
 \bigskip
 Diese Definition lässt sich leicht veranschaulichen: Im Beispielgraphen vom Anfang erkennt man, dass dies kein vollständiger Graph ist, da sich die vier Studierenden nicht alle untereinander kennen. Ändert man das Beispiel jedoch so ab, wie es beim Beweis des Handshaking-Lemmas getan wurde, erhält man einen vollständigen Graphen: Jeder gibt jedem die Hand, jeder lernt die anderen aus der Gruppe kennen; jeder Knoten ist zu jedem anderen benachbart.\\
-\includegraphics{three_h_lemma}
 \bigskip
 \emph{Frage an den geneigten Leser.} Folgere aus dem Handshaking-Lemma: Was ist die Anzahl an Kanten in einem (endlichen) vollständigen Graphen? Warum ist das so?\footnote[1]{Den Beweis hierzu gibt's am Ende des Papers.}\\
 \bigskip
@@ -156,11 +175,22 @@ In diesem Zusammenhang können wir nun einen weiteren Begriff aus dem Reich der 
 		\item[$\rightarrow$] Falls ein Graph die \emph{maximale Anzahl an Kanten} $m_{\mathrm{max}} = |A| \cdot |B|$ besitzt, nennt man ihn \emph{vollständig bipartit}.
 	\end{itemize}
 \end{definition}
-Um zu verdeutlichen, wie ein bipartiter Graph aussieht, hier folgendes Beispiel:\\
-\includgegraphics{bipartit}
-\bigskip
+\newpage
+Um zu verdeutlichen, wie ein bipartiter Graph aussieht, hier folgendes Beispiel:
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=10cm]{vortrag_schriftlich/images/bipartit.drawio.png}
+    \caption{Beispiel für einen bipartiten Graphen und einen nicht-bipartiten Graohen.}
+    \label{fig:fig4}
+\end{figure}
+\clearpage
 Schauen wir uns zu bipartiten Graphen einmal ein wichtiges Beispiel aus der Graphentheorie an: Den Würfelgraphen:\\
-\includegraphics{wuerfelgraph}
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=7cm]{vortrag_schriftlich/images/wuerfelgraph.png}
+    \caption{Der Würfelgraph.}
+    \label{fig:fig5}
+\end{figure}
 \newpage
 \section{Was sind Wege?}
 Was sind Wege? - eine einfache Frage, würde man sich vielleicht denken, jedoch sind mathematische Wege etwas anderes als das, was wir umgangssprachlich als "Weg" bezeichnen. Bevor wir diese Frage sauber mathematisch beantworten können, müssen wir jedoch zunächst noch etwas Vorarbeit leisten - beginnend mit Teilgraphen:\\
@@ -170,8 +200,14 @@ Was sind Wege? - eine einfache Frage, würde man sich vielleicht denken, jedoch 
 	Falls $E'$ jede Kante aus $E$ enthält, die zwei Knoten aus $V'$ verbindet, so sagt man: $G'$ ist ein von $V' \subseteq V$ \emph{induzierter Teilgraph} bzw.\ \emph{Untergraph} von $G$.
 \end{definition}
 Um diese Definitionen besser nachvollziehen zu können, hierzu einmal ein paar Beispiele:\\
-\includegraphics{teilgraph}
-\bigskip
+\vfill
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=10cm]{vortrag_schriftlich/images/teilgraph.drawio.png}
+    \caption{Ein Teilgraph und ein induzierter Graph.}
+    \label{fig:fig6}
+\end{figure}
+\vfill
 Nun kommen wir zur nächsten Definition, welche wir ebenfalls noch als Vorarbeit benötigen, um schließlich den Begriff des Weges -- eine weitere sehr Wichtige Klasse an Teilgraphen -- einzuführen:\\
 \begin{definition}
 	Ein \emph{Kantenzug $Z$} in $G$ ist eine Folge von Knoten und Kanten in $G$, die sich wie folgt hintereinanderschreiben lässt:
@@ -211,7 +247,15 @@ Aus dieser Definition folgt sofort:
 %%%TODO: Ist das richtig?
 %%%\emph{Frage an den geneigten Leser.}\\
 %%%In welcher Art von (endlichen) Graphen lässt sich immer ein Kreis finden?\\
-\includegraphics{kantenzug_weg}
+\vfill
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=10cm]{vortrag_schriftlich/images/kantenzug_weg.drawio.png}
+    \caption{Kantenzug, Weg und Kreis.}
+    \label{fig:fig7}
+\end{figure}
+\vfill
+\newpage
 Nun, da wir um diese wichtigen Definitionen wissen, gibt es noch eine \emph{einfache} Sache zu beachten;\\
 \begin{definition}
 	Wir definieren...
@@ -231,13 +275,20 @@ Wollen wir dies nun beweisen.\\
 	Sei nun $p = x_0 \ldots x_k$ ein längster einfacher Weg in $G$. Wir nehmen nun an, dass $x_k$ einen Nachbarn $a$ hat, welcher nicht auf $p$ liegt. Dies bedeutet nun aber, dass $p$ um die Kante $\{x_k, a\}$ verlängert werden muss, sonst wäre $a$ kein Nachbar von $x_k$.\\
 	Nun haben wir also einen neuen Weg $\bar{p} = x_0 \ldots x_k a$. Trivialerweise ist $\bar{p}$ ein längerer Weg als $p$, da $\bar{p}$ um eine Kante länger ist.\\
 	Dies erschafft jedoch einen Widerspruch dazu, dass $p$ der längste einfache Weg ist, denn nun ist es $bar{p}$.\\
-	\Rightarrow Daraus können wir folgern, dass alle Nachbarn von $x_k$ auf $p$ liegen müssen, denn würden sie es nicht, wäre $p$ kein längster einfacher Weg mehr.\\
-	\Rightarrow Es gilt: $$k \ge \text{d}(x_k) \geq \delta(G)$$.\\
+	$\Rightarrow$ Daraus können wir folgern, dass alle Nachbarn von $x_k$ auf $p$ liegen müssen, denn würden sie es nicht, wäre $p$ kein längster einfacher Weg mehr.\\
+	$\Rightarrow$ Es gilt: $$k \ge \text{d}(x_k) \geq \delta(G)$$.\\
 	\emph{Teil (II.)} Sei nun $x_i$ ein Nachbar von $x_0$, der am weitesten entfernt von $x_0$ liegt. Vorstellen kann man sich diese Konstruktion wie folgt:\\
-	\includegraphics{proof_thm}
+    \vfill
+	\begin{figure}[htp]
+	    \centering
+	    \includegraphics[width=10cm]{vortrag_schriftlich/images/proof_thm.drawio.png}
+	    \caption{Ein längster einfacher Weg $p = x_0 \ldots x_i \ldots x_k$}
+	    \label{fig:fig8}
+	\end{figure}
+    \vfill
 	Aus Teil \emph{(I.)} folgern wir: Alle Nachbarn von $x_0$ liegen auf $p = x_0 \ldots x_i \ldots x_k$.\\
-	\Rightarrow Ein einfacher Weg $p' = x_0 x_1 \ldots x_i$ hat mindestens eine Länge von $\delta(G) \geq 2$.\\
-	\Rightarrow Dadurch entsteht auch ein einfacher Kreis $k = x_0 \ldots x_i x_0$ von mindestens der Länge $\delta(G) + 1 \geq 3$, bei dem keine Kante und kein Knoten doppelt durchlaufen werden, womit wir unsere Aussage bewiesen haben.
+	$\Rightarrow$ Ein einfacher Weg $p' = x_0 x_1 \ldots x_i$ hat mindestens eine Länge von $\delta(G) \geq 2$.\\
+	$\Rightarrow$ Dadurch entsteht auch ein einfacher Kreis $k = x_0 \ldots x_i x_0$ von mindestens der Länge $\delta(G) + 1 \geq 3$, bei dem keine Kante und kein Knoten doppelt durchlaufen werden, womit wir unsere Aussage bewiesen haben.
 \end{proof}
 Dies gibt uns die mächtige Erkenntnis, dass wir in jedem (endlichen, einfachen) Graphen einen einfachen Weg und in jedem Graphen mit $\delta(G) \geq 2$ sogar einen einfachen Kreis finden können!\\
 \bigskip
@@ -252,7 +303,12 @@ Zu guter letzt wollen wir uns in diesem Kapitel noch eine Definition anschauen, 
 Man kann sich zum besseren Verständnis dieser nun doch recht abstrakten Definitionen vorstellen: Zusammenhangskomponenten sind quasi das "Gegenstück" zu bipartiten Graphen \footnote[3]{Ausnahme hierbei bilden isolierte Punkte als Graph.}.
 \bigskip
 Um sich besser vorstellen zu können, was diese Definitionen eigentlich meinen, hier ein Beispiel:\\
-\includegraphics{zsmhaengend}
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=13cm]{vortrag_schriftlich/images/zsmhaengend.drawio.png}
+    \caption{Zusammenhängeder Graph und Zusammenhangskomponenten.}
+    \label{fig:fig9}
+\end{figure}
 
 \newpage
 \section[Wozu das Ganze?]{Wozu das Ganze? (Ausblick, Anwendungen)}
