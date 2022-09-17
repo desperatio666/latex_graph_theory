@@ -5,8 +5,7 @@
 \usepackage{amsthm}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
-
-\newtheorem{theorem}{Satz} %TODO: change counter 
+\newtheorem{theorem}{Satz} %TODO: change counter
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
 \theoremstyle{plain}
@@ -20,6 +19,7 @@
 \renewcommand{\figurename}{Abbildung}
 \renewcommand{\proofname}{Beweis}
 \renewcommand{\contentsname}{}
+\renewcommand\refname{Literatur}
 
 \title{Graphentheorie}
 \author{Franziska Butter}
@@ -38,7 +38,7 @@
 In diesem Paper möchte ich eine erste Einführung zum Thema Graphentheorie geben. Wer noch nie mit dem Thema in Berührung gekommen ist, soll nach dem Studieren dieser Einführung einen grundlegenden Überblick über die Basics bekommen. Hierzu beginnen wir mit den gundlegenden Definitionen, werden uns einsteigende Beispiele anschauen, sowie ein paar erste Sätze.\\
 \bigskip
 \begin{definition} 
-            Ein \textbf{Graph} \( G = (V, E)\) besteht aus einer nichtleeren Menge V und einer (möglicherweise leeren) Kantenmenge \(E\), wobei jede Kante \(e \in E\) zwei Knoten \(u, v\) miteinander verbindet.
+            Ein \textbf{Graph} \( G = (V, E)\) besteht aus einer nichtleeren Menge V und einer (möglicherweise leeren) Kantenmenge \(E\), wobei jede Kante \(e \in E\) zwei Knoten \(u, v\) miteinander verbindet.\cite[S.~11]{bue_1}
 \end{definition}
 \bigskip
 Beginnen wir also direkt mit dieser Definition. Zunächst abstrakt wirkend, schauen wir uns doch erst einmal ein Beispiel an:\\
@@ -62,7 +62,7 @@ Diese Begriffe nochmal in Definitionen zusammengepackt:\\
 \begin{itemize}
 	\item Wenn \(u = v\) für eine Kante \(e = \{u, v\}\) gilt, so heißt diese Kante \textit{Schlinge}.
 	\item Wenn für zwei Kanten \(e, f \in E\) gilt: \(e = f = \{u, v\}\) (gleiche Endknoten), so heißen diese \textit{parallel}. 
-	\item Ein Graph heißt \textit{einfach}, genau dann, wenn er weder Schlingen noch parallele Kanten enthält.
+	\item Ein Graph heißt \textit{einfach}, genau dann, wenn er weder Schlingen noch parallele Kanten enthält.\cite{bue_1}
 \end{itemize}
 \begin{figure}[!htp]
     \centering
@@ -200,7 +200,7 @@ Schauen wir uns zu bipartiten Graphen einmal ein wichtiges Beispiel aus der Grap
     \includegraphics[width=7cm]{vortrag_schriftlich/images/wuerfelgraph.png}
     \caption{Der Würfelgraph.}
     \label{fig:fig5}
-\end{figure}
+\end{figure}\cite{website:wikiversity}
 \newpage
 \section{Was sind Wege?}
 Was sind Wege? - eine einfache Frage, würde man sich vielleicht denken, jedoch sind mathematische Wege etwas anderes als das, was wir umgangssprachlich als "Weg" bezeichnen. Bevor wir diese Frage sauber mathematisch beantworten können, müssen wir jedoch zunächst noch etwas Vorarbeit leisten - beginnend mit Teilgraphen:\\
@@ -359,5 +359,7 @@ Dies bringt unseren kleinen Ausflug in die Graphentheorie zu einem Ende. Da die 
 \end{small}
 \newpage
 \section{Literaturverzeichnis}
-\bibliography{bibliogra}
+
+\bibliography{vortrag_schriftlich/bibliography}
+\bibliographystyle{plain}
 \end{document}
