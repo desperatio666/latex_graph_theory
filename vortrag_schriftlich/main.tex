@@ -15,7 +15,6 @@
   {\renewcommand{\thistheoremname}{#1}
    \begin{genericthm}}
   {\end{genericthm}}
-%\addto\captionsgerman{\renewcommand{\figurename}{Abbildung}}
 \renewcommand{\figurename}{Abbildung}
 \renewcommand{\proofname}{Beweis}
 \renewcommand{\contentsname}{}
@@ -38,7 +37,7 @@
 In diesem Paper möchte ich eine erste Einführung zum Thema Graphentheorie geben. Wer noch nie mit dem Thema in Berührung gekommen ist, soll nach dem Studieren dieser Einführung einen grundlegenden Überblick über die Basics bekommen. Hierzu beginnen wir mit den gundlegenden Definitionen, werden uns einsteigende Beispiele anschauen, sowie ein paar erste Sätze.\\
 \bigskip
 \begin{definition} 
-            Ein \textbf{Graph} \( G = (V, E)\) besteht aus einer nichtleeren Menge V und einer (möglicherweise leeren) Kantenmenge \(E\), wobei jede Kante \(e \in E\) zwei Knoten \(u, v\) miteinander verbindet.\cite[S.~11]{bue_1}
+            Ein \textbf{Graph} \( G = (V, E)\) besteht aus einer nichtleeren Menge V und einer (möglicherweise leeren) Kantenmenge \(E\), wobei jede Kante \(e \in E\) zwei Knoten \(u, v\) miteinander verbindet.\cite[S.~2]{bue_1}
 \end{definition}
 \bigskip
 Beginnen wir also direkt mit dieser Definition. Zunächst abstrakt wirkend, schauen wir uns doch erst einmal ein Beispiel an:\\
@@ -62,7 +61,7 @@ Diese Begriffe nochmal in Definitionen zusammengepackt:\\
 \begin{itemize}
 	\item Wenn \(u = v\) für eine Kante \(e = \{u, v\}\) gilt, so heißt diese Kante \textit{Schlinge}.
 	\item Wenn für zwei Kanten \(e, f \in E\) gilt: \(e = f = \{u, v\}\) (gleiche Endknoten), so heißen diese \textit{parallel}. 
-	\item Ein Graph heißt \textit{einfach}, genau dann, wenn er weder Schlingen noch parallele Kanten enthält.\cite{bue_1}
+	\item Ein Graph heißt \textit{einfach}, genau dann, wenn er weder Schlingen noch parallele Kanten enthält.\cite[S.~2]{bue_1}
 \end{itemize}
 \begin{figure}[!htp]
     \centering
@@ -79,18 +78,28 @@ Nun wird es zunächst wieder etwas technischer. Kanten und Knoten untereinander 
     Es gilt jeweils:
     \begin{itemize}
         \item \textbf{inzident}:
-            Ein Knoten \(v\) und eine Kante \(e\) \textit{inzidieren} miteinander, wenn \(v\) ein \textit{Endknoten} von \(e\) ist.
+            Ein Knoten \(v\) und eine Kante \(e\) \emph{inzidieren} miteinander, wenn \(v\) ein \emph{Endknoten} von \(e\) ist.
         \item \textbf{Nachbar eines Knotens}:
-            Gilt für eine Menge an Knoten \(\{u, v\} \in E\), so sind \(u\) und \(v\) \textit{adjazent} bzw. \textit{benachbart} in \(G\) und heißen \textit{Nachbarn}.
+            Gilt für eine Menge an Knoten \(\{u, v\} \in E\), so sind \(u\) und \(v\) \emph{adjazent} bzw. \textit{benachbart} in \(G\) und heißen \emph{Nachbarn}.
         \item \textbf{Nachbar einer Kante}:
-            Zwei Kanten \(e = \{u, v\} \in E\) und \(f = \{v, w\} \in E\) heißen \textit{adjazent/benachbart}, wenn sie einen gemeinsamen Knoten haben.
+            Zwei Kanten \(e = \{u, v\} \in E\) und \(f = \{v, w\} \in E\) heißen \emph{adjazent/benachbart}, wenn sie einen gemeinsamen Knoten haben.\cite[S.~4]{bue_1}
     \end{itemize}
 \end{definition}
+\begin{small}
+    \emph{
+        Anmerkung: Im Übrigen ist es irrelevant, ob ein Graph nun ausgemalte Knoten hat, die Kanten kurvig oder gerade sind, oder wie 'übersichtlich' die Knoten und Kanten miteinander verbunden sind. Graphen sind nämlich unabhängig von ihrer graphischen Darstellung. Ob die Kanten nun beispielsweise übersichtlich mit den Knoten verbunden sind, oder ob ein Chaos unter den Kanten herrscht und sie kurvig und eckig gezeichnet werden, spielt keine Rolle. Wichtig ist nur, \emph{wie} die Beziehungen der Knoten und Kanten zueinander jeweils sind.
+    }
+\end{small}\\\\
+\emph{Frage an den geneigten Leser.} Finde ein Beispiel für einen unendlichen Graphen.\\\\
+Schauen wir uns zum besseren Verständnis dieser Definitionen diese doch einmal als Bild an:\\
 \bigskip
-\emph{Frage an den geneigten Leser.} Finde ein Beispiel für einen unendlichen Graphen.
-\bigskip
-Diese Definitionen macht man sich am Besten klar, indem man sich selbst einmal einen Graphen anschaut (dafür eignet sich beispielsweise unser einführendes Beispiel mit den Studierenden).\\
-%%%%TODO: Bild einfügen + überarbeiten!
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=8cm]{vortrag_schriftlich/images/inzident.drawio.png}
+    \caption{Inzidenz, benachbarte Knoten und benachbarte Kanten.}
+    \label{fig:fig10}
+\end{figure}
+\newpage
 \subsection{Konventionen}
 Bevor wir uns weiter in der Welt der Graphentheorie hervortasten, zunächst ein paar Konventionen, die wir festlegen:
 \begin{itemize}
@@ -98,7 +107,7 @@ Bevor wir uns weiter in der Welt der Graphentheorie hervortasten, zunächst ein 
         \item \textit{Endknoten.} Wir bezeichnen einen Endknoten einer Kante \(e\) als ein Knoten \(u \in V\), der in einer Kante \(e = \{u, v\}\) enthalten ist. 
         \item Knotenanzahl in einem Graphen: \(n\)
         \item Kantenanzahl in einem Graphen: \(m\)
-        \item Wir beschäftigen uns von nun an mit \textit{einfachen} Graphen.
+        \item Wir beschäftigen uns von nun an mit \textit{einfachen} Graphen.\cite[S.~5]{bue_1}
     \end{itemize}
 
 \newpage
@@ -107,7 +116,7 @@ Nun, da die nötigen Grundlagen gelegt sind, kann es auch schon mit der ersten w
 \bigskip
 Bevor wir jedoch dazu kommen, müssen wir erneut eine relevante Definition einführen:\\
 \bigskip
-\begin{definition} Sei \(G = (V, E)\) ein Graph. Der \textbf{Grad} \(d(v)\) eines Knotens \(v \in V\) ist die Anzahl des Auftretens von \(v\) als Endknoten einer Kante. Wenn \(G\) einfach ist, so ist \(d(v)\) gleich der Anzahl der Nachbarn von v.
+\begin{definition} Sei \(G = (V, E)\) ein Graph. Der \textbf{Grad} \(d(v)\) eines Knotens \(v \in V\) ist die Anzahl des Auftretens von \(v\) als Endknoten einer Kante. Wenn \(G\) einfach ist, so ist \(d(v)\) gleich der Anzahl der Nachbarn von $v$.\cite[S.~5]{bue_1}
 \end{definition}
 \bigskip
 Diese Definition lässt sich sehr einfach auf unseren Beispielgraphen vom Anfang übertragen: Um beispielsweise den Grad des Knotens "Katrin" zu bestimmen, zählen wir einfach, wie viele Kanten von dem Knoten ausgehen, also, mit wie vielen Studierenden Katrin aus der Gruppe von 4 Menschen befreundet ist, also die Anzahl der Nachbarn des Knoten "Katrin". In diesem Falle sind es \(3\) Kanten, also ist Katrin mit 3 Studierenden (Tom, Erik, Lisa) befreundet.\\
@@ -116,7 +125,7 @@ Das Zählen der Freunde funktioniert aber nur, da G einfach ist. Würde es beisp
 Weiterhin bezeichnen wir für einen Knoten \(v \in V\):
 \begin{itemize}
 	\item \(\delta(G)\) als \textit{Minimalgrad} eines Graphen, und
-	\item \(\Delta(G)\) als \textit{Maximalgrad} eines Graphen.
+	\item \(\Delta(G)\) als \textit{Maximalgrad} eines Graphen.\cite[S.~5]{bue_1}
 \end{itemize}
 \textit{Frage an den geneigten Leser.}\\
 Was sind jeweils der Minimal- und Maximalgrad des Beispielgraphen?\\
@@ -125,7 +134,7 @@ Nun können wir auch schon zur versprochenen wichtigen Erkenntnis kommen: Dem Ha
 \begin{namedthm}{Lemma}[Handshaking-Lemma]
 Die Summe der Knotengrade entspricht zweimal der Anzahl der Knoten, also
 \begin{equation*}
-	\sum_{v \in V}d(v) = 2 \cdot |E| = 2m.
+	\sum_{v \in V}d(v) = 2 \cdot |E| = 2m.\cite[S.~5]{bue_1}
 \end{equation*}
 \end{namedthm}
 \bigskip
@@ -145,7 +154,7 @@ Die Summe der Knotengrade entspricht zweimal der Anzahl der Knoten, also
 \newpage
 Aus dem doch recht anschaulichen Handshaking-Lemma können wir als nächstes eine Erkenntnis folgern:\\
 \begin{namedthm}{Lemma}
-	In einem Graphen ist die Anzahl der Knoten mit \emph{ungeradem Grad} gerade.\\
+	In einem Graphen ist die Anzahl der Knoten mit \emph{ungeradem Grad} gerade.\cite[S.~6]{bue_1}
 \end{namedthm}
 \bigskip
 Dies mag zunächst etwas technisch wirken, ist jedoch ebenfalls recht einfach zu beweisen:
@@ -161,7 +170,7 @@ Dies mag zunächst etwas technisch wirken, ist jedoch ebenfalls recht einfach zu
 			&2\text{m} = \sum_{v \in V}d(v) = \sum_{v \in V_1} + \sum{v \in V_2}d(v)\\
 			&\Leftrightarrow \underbrace{2m - \sum_{v \in V_2}d(v)}_{\text{gerade}} = \sum_{v \in V_1}\underbrace{d(v)}_{\text{ungerade, da in $V_1$}}\\
 		\end{align*}
-	Die linke Seite der Gleichung ist offensichtlich gerade. Nicht so ganz trivial zu sehen ist, warum die rechte Seite der Summe ebenfalls gerade sein sollte: Dies muss der Fall sein, da sonst die Gleichung nicht erfüllt werden könnte. Eine Summe von ungeraden Summanden muss zwingend gerade sein, da sonst die linke Seite ebenfalls nicht gerade wäre. Es muss eine gerade Anzahl ovn ungeraden Summanden aufsummiert werden, damit eine Summe gerade wird. Somit ist $|V_1|$ gerade.
+	Die linke Seite der Gleichung ist offensichtlich gerade. Nicht so ganz trivial zu sehen ist, warum die rechte Seite der Summe ebenfalls gerade sein sollte: Dies muss der Fall sein, da sonst die Gleichung nicht erfüllt werden könnte. Eine Summe von ungeraden Summanden muss zwingend gerade sein, da sonst die linke Seite ebenfalls nicht gerade wäre. Es muss eine gerade Anzahl ovn ungeraden Summanden aufsummiert werden, damit eine Summe gerade wird. Somit ist $|V_1|$ gerade.\cite[S.~6]{bue_1}
 \end{proof}
 \newpage
 \section{Jeder kennt jeden -- vollständige Graphen}
@@ -170,7 +179,7 @@ Jetzt, mit etwas Grundwissen ausgestattet, können wir uns einer sehr wichtigen 
 	Ein Graph $G = (V, E)$ heißt \textbf{vollständig}, wenn jeder Knoten zu jedem anderen benachbart ist.
 	\begin{itemize}
 		\item[$\rightarrow$] Da $G$ nur von $n$ abhängt, bezeichnen wir $G$ als $K_n$.
-		\item[$\rightarrow$] Eine offensichtliche Folgerung daraus ist: $\delta(G) = \Delta(G)$.
+		\item[$\rightarrow$] Eine offensichtliche Folgerung daraus ist: $\delta(G) = \Delta(G)$.\cite[S.~6]{bue_1}
 	\end{itemize}
 \end{definition}
 \bigskip
@@ -182,7 +191,7 @@ In diesem Zusammenhang können wir nun einen weiteren Begriff aus dem Reich der 
 \begin{definition}
 	Ein Graph $G = (V, E)$ heißt \textbf{bipartit}, wenn seine Knoten in zwei Teilmengen an Knoten $A, B \in V$ so zerlegt werden können, dass nur Kanten \textbf{zwischen}, aber nicht \textbf{innerhalb} einer Knotenmenge verlaufen. Anders gesagt bedeutet das also: In einer jeweiligen Teilmenge $A, B$ existieren keine zueinander benachbarten Knoten.
 	\begin{itemize}
-		\item[$\rightarrow$] Falls ein Graph die \emph{maximale Anzahl an Kanten} $m_{\mathrm{max}} = |A| \cdot |B|$ besitzt, nennt man ihn \textbf{vollständig bipartit}.
+		\item[$\rightarrow$] Falls ein Graph die \emph{maximale Anzahl an Kanten} $m_{\mathrm{max}} = |A| \cdot |B|$ besitzt, nennt man ihn \textbf{vollständig bipartit}.\cite[S.~7]{bue_1}
 	\end{itemize}
 \end{definition}
 \newpage
@@ -207,7 +216,7 @@ Was sind Wege? - eine einfache Frage, würde man sich vielleicht denken, jedoch 
 \begin{definition}
 	Sei $G = (V, E)$ ein Graph. Ein Graph $G' = (V', E')$ ist ein \textbf{Teilgraph} von $G$, wenn $V' \subseteq V$ und $E' \subseteq E$ gilt.
 		\par\bigskip
-	Falls $E'$ jede Kante aus $E$ enthält, die zwei Knoten aus $V'$ verbindet, so sagt man: $G'$ ist ein von $V' \subseteq V$ \textbf{induzierter Teilgraph} bzw.\ \textbf{Untergraph} von $G$.
+	Falls $E'$ jede Kante aus $E$ enthält, die zwei Knoten aus $V'$ verbindet, so sagt man: $G'$ ist ein von $V' \subseteq V$ \textbf{induzierter Teilgraph} bzw.\ \textbf{Untergraph} von $G$.\cite[S.~8]{bue_1}
 \end{definition}
 Um diese Definitionen besser nachvollziehen zu können, hierzu einmal ein paar Beispiele:\\
 \vfill
@@ -218,13 +227,13 @@ Um diese Definitionen besser nachvollziehen zu können, hierzu einmal ein paar B
     \label{fig:fig6}
 \end{figure}
 \vfill
-Nun kommen wir zur nächsten Definition, welche wir ebenfalls noch als Vorarbeit benötigen, um schließlich den Begriff des Weges -- eine weitere sehr Wichtige Klasse an Teilgraphen -- einzuführen:\\
+Nun kommen wir zur nächsten Definition, welche wir ebenfalls noch als Vorarbeit benötigen, um schließlich den Begriff des Weges -- eine weitere sehr wichtige Klasse an Teilgraphen -- einzuführen:\\
 \begin{definition}
 	Ein \textbf{Kantenzug $Z$} in $G$ ist eine Folge von Knoten und Kanten in $G$, die sich wie folgt hintereinanderschreiben lässt:
 	 \begin{equation*}
 		Z = e_0e_1e_2 \ldots e_k
 	\end{equation*}
-	 wobei $e_i = \{x_i, x_{i+1}\}$ gilt ($x_i \in V$ sind hier die Knoten).
+	 wobei $e_i = \{x_i, x_{i+1}\}$ gilt ($x_i \in V$ sind hier die Knoten).\cite[S.~9]{bue_1}
 \end{definition}
 \bigskip
 Ein Kantenzug ist also genau das, wonach es klingt - man schreibt einfach verschiedene "benachbarte" Kanten hintereinander auf. Dabei ist es wichtig zu erwähnen, dass hierbei gleiche Kanten mehrfach durchlaufen werden dürfen, und Start- und Endknoten eines Kantenzuges sind egal.\\
@@ -243,7 +252,7 @@ Nun sind wir soweit, dass wir endlich einen mathematischen Weg definieren könne
 	Sei $Z$ ein Kantenzug. Definiere nun $Z$ als
 	\begin{itemize}
 		\item einen \textbf{Weg}: Alle Kanten in $Z$ sind verschieden. Die Knoten $x_0$ und $x_k$ sind die \emph{Endknoten} eines Weges $p$.
-		\item einen \textbf{Kreis}: Ein \textbf{Kreis} ist ein Weg, bei dem gilt: $x_0 = x_k$ (gleicher Anfangs- und Endknoten).
+		\item einen \textbf{Kreis}: Ein \textbf{Kreis} ist ein Weg, bei dem gilt: $x_0 = x_k$ (gleicher Anfangs- und Endknoten).\cite[S.~9]{bue_1}
 	\end{itemize}
 \end{definition}
 \bigskip
@@ -254,9 +263,6 @@ Aus dieser Definition folgt sofort:
 	Die \textbf{Länge} eines Weges ist die Anzahl der Kanten im Kantenzug, der den Weg definiert.
 \end{definition}
 \bigskip
-%%%TODO: Ist das richtig?
-%%%\emph{Frage an den geneigten Leser.}\\
-%%%In welcher Art von (endlichen) Graphen lässt sich immer ein Kreis finden?\\
 \vfill
 \begin{figure}[!htp]
     \centering
@@ -271,12 +277,12 @@ Nun, da wir um diese wichtigen Definitionen wissen, gibt es noch eine \emph{einf
 	Wir definieren...
 	\begin{itemize}
 		\item \textbf{einfacher Weg:} Ein Weg heißt \emph{einfach}, wenn keine doppelten Knoten vorkommen, also kein Knoten doppelt "`durchlaufen"' wird.
-		\item \textbf{einfacher Kreis:} Ein Kreis heißt \emph{einfach}, wenn außer dem Endknoten kein Knoten doppelt vorkommt.
+		\item \textbf{einfacher Kreis:} Ein Kreis heißt \emph{einfach}, wenn außer dem Endknoten kein Knoten doppelt vorkommt.\cite[S.~9]{bue_1}
 	\end{itemize}
 \end{definition}
 Kommen wir jetzt zu einer sehr machtvollen Erkenntnis über einfache Wege und einfache Kreise:\\
 \begin{theorem}
-	Jeder Graph $G$ enthält einen einfachen Weg der Länge $\delta(G)$. \emph{(I.)} Falls $\delta(G) \geq 2$ gilt, dann enthält er auch einen einfachen Kreis von mindestens der Länge $\delta(G) + 1$. ($\delta(G)$ ist der Minimalgrad.) \emph{(II.)}
+	Jeder Graph $G$ enthält einen einfachen Weg der Länge $\delta(G)$. \emph{(I.)} Falls $\delta(G) \geq 2$ gilt, dann enthält er auch einen einfachen Kreis von mindestens der Länge $\delta(G) + 1$. ($\delta(G)$ ist der Minimalgrad.) \emph{(II.)}\cite[S.~9]{bue_1}
 \end{theorem}
 Wollen wir dies nun beweisen.\\
 \begin{proof}
@@ -298,17 +304,17 @@ Wollen wir dies nun beweisen.\\
     \vfill
 	Aus Teil \emph{(I.)} folgern wir: Alle Nachbarn von $x_0$ liegen auf $p = x_0 \ldots x_i \ldots x_k$.\\
 	$\Rightarrow$ Ein einfacher Weg $p' = x_0 x_1 \ldots x_i$ hat mindestens eine Länge von $\delta(G) \geq 2$.\\
-	$\Rightarrow$ Dadurch entsteht auch ein einfacher Kreis $k = x_0 \ldots x_i x_0$ von mindestens der Länge $\delta(G) + 1 \geq 3$, bei dem keine Kante und kein Knoten doppelt durchlaufen werden, womit wir unsere Aussage bewiesen haben.
+	$\Rightarrow$ Dadurch entsteht auch ein einfacher Kreis $k = x_0 \ldots x_i x_0$ von mindestens der Länge $\delta(G) + 1 \geq 3$, bei dem keine Kante und kein Knoten doppelt durchlaufen werden, womit wir unsere Aussage bewiesen haben.\cite[S.~10]{bue_1}
 \end{proof}
 Dies gibt uns die mächtige Erkenntnis, dass wir in jedem (endlichen, einfachen) Graphen einen einfachen Weg und in jedem Graphen mit $\delta(G) \geq 2$ sogar einen einfachen Kreis finden können!\\
 \bigskip
-Zu guter letzt wollen wir uns in diesem Kapitel noch eine Definition anschauen, welche im weiteren Verlauf der Graphentheorie sehr wichtig werden wird: Zusammenhängende Graphen.\\
+Zu guter Letzt wollen wir uns in diesem Kapitel noch eine Definition anschauen, welche im weiteren Verlauf der Graphentheorie sehr wichtig werden wird: Zusammenhängende Graphen.\\
 \begin{definition}
 	Ein Graph $G$ heißt \textbf{zusammenhängend}, wenn zu je zwei Knoten $u, v \in V$ von $G$ ein \emph{Weg} von $u$ nach $v$ existiert (mit $u$ als Anfangs- und $v$ als Endknoten).
 	\par\bigskip
 	Nicht zusammenhängende Graphen heißen \textbf{unzusammenhängend}.
 	\par\bigskip
-	Eine \textbf{Zusammenhangskomponente} $H$ von $G$ ist ein \emph{maximal zusammenhängender Teilgraph} von $G$.\footnote[2]{Intuitiv bedeutet das also: $H$ ist eine Zusammenhangskomponente genau dann, wenn H selbst zusammenhängend ist, und \emph{kein Weg aus H herausführt},also keine Knoten in H von Wegen außerhalb von H erreichbar sind.}
+	Eine \textbf{Zusammenhangskomponente} $H$ von $G$ ist ein \emph{maximal zusammenhängender Teilgraph} von $G$.\footnote[2]{Intuitiv bedeutet das also: $H$ ist eine Zusammenhangskomponente genau dann, wenn H selbst zusammenhängend ist, und \emph{kein Weg aus H herausführt},also keine Knoten in H von Wegen außerhalb von H erreichbar sind.}\cite[S.~11]{bue_1}
 \end{definition}
 Man kann sich zum besseren Verständnis dieser nun doch recht abstrakten Definitionen vorstellen: Zusammenhangskomponenten sind quasi das "Gegenstück" zu bipartiten Graphen \footnote[3]{Ausnahme hierbei bilden isolierte Punkte als Graph.}.
 \bigskip
@@ -341,7 +347,8 @@ Die Graphentheorie hat sehr viele Anwendungen im "echten Leben". Dies mag vielle
 Wie wir sehen, sind die Anwendungen der Graphentheorie sehr vielfältig: Wir finden sie fast überall in der Wissenschaft, spezifisch vor allem in der Informatik.\\
 \hrule
 \bigskip
-Dies bringt unseren kleinen Ausflug in die Graphentheorie zu einem Ende. Da die Basics nun gelegt sind, kann man sich nun in die weiteren Tiefen dieses Themengebietes stürzen.
+Dies bringt unseren kleinen Ausflug in die Graphentheorie zu einem Ende. Da die Basics nun gelegt sind, kann man sich -- je nach Lust und Laune -- in die weiteren Tiefen dieses Themengebietes stürzen. Wie der vorangegangene Abschnitt zeigt, gibt es noch viele weitere spannende Anwendungen und Informationen über dieses Thema zu entdecken!\\
+Nur Mut! Der geneigte Leser vermag nun sein Wissen in diesem Gebiet vertiefen (oder auch nicht), und sich in der Welt der Graphentheorie weiter vorantasten.
 \newpage
 \begin{small}
 	Die versprochenen Auflösung zu der kleinen Aufgabe gibt's hier:\\
